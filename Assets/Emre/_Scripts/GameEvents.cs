@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Emre
@@ -9,7 +10,7 @@ namespace Emre
         public static UnityAction<GameEventResponse> OnSoundToggle;
         public static UnityAction<GameEventResponse> OnLoadedVibrationToggle;
         public static UnityAction<GameEventResponse> OnVibrationToggle;
-
+        public static UnityAction<GameEventResponse> OnDoorDashed;
 
         public static void RaiseLoadedSongToggle(bool isOn)
         {
@@ -42,6 +43,16 @@ namespace Emre
                 isVibrationOn = isOn
             });
         }
+
+        public static void RaiseDoorDashed(GateOperator gateOperator, int gateValue)
+        {
+            OnDoorDashed?.Invoke(new GameEventResponse()
+            {
+                gateOperator = gateOperator,
+                gateValue = gateValue
+            });
+        }
+        
     }
 
 
@@ -50,5 +61,7 @@ namespace Emre
     {
         public bool isSoundOn;
         public bool isVibrationOn;
+        public GateOperator gateOperator;
+        public int gateValue;
     }
 }

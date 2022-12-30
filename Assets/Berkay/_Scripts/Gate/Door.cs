@@ -1,0 +1,67 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using Emre;
+using TMPro;
+using UnityEngine;
+
+public enum GateOperator
+{
+    Add,
+    Mult
+    
+}
+
+public class Door : MonoBehaviour
+{
+    [Header("Values")]
+    [SerializeField] private GateOperator gateOperator;
+    [SerializeField] private int value;
+
+    [Header("References")] 
+    [SerializeField] private TMP_Text doorText;
+    
+    public bool isEntered = false;
+    private BoxCollider boxCollider;
+
+    
+    private void Start()
+    {
+        boxCollider = GetComponentInChildren<BoxCollider>();
+        UpdateText();
+    }
+    
+    private void Update()
+    {
+        BeUnInteractable();
+    }
+
+    private void UpdateText()
+    {
+        if (gateOperator == GateOperator.Add)
+        {
+            doorText.text = "+" + value;
+        }
+        else
+        {
+            doorText.text = "x" + value;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Bİ ŞEYLER GİRDİ"); 
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("PLAYER GİRDİ");
+            isEntered = true;
+            GameEvents.RaiseDoorDashed(gateOperator, value);
+        }
+    }
+    
+
+    public void BeUnInteractable()
+    {
+        boxCollider.enabled = false;
+    }
+}

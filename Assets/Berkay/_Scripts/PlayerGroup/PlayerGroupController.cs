@@ -40,9 +40,9 @@ public class PlayerGroupController : MonoBehaviour
         GameEvents.OnDoorDashed -= OnDoorDeshed;
     }
 
-    private void Update() //TEST CODE
+    /*private void Update() //TEST CODE
     {
         GroupCount = PlayerSpawner.players.Count;
         Debug.Log(GroupCount);
-    }
+    }*/
 }

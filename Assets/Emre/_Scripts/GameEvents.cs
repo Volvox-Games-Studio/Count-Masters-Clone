@@ -18,6 +18,7 @@ namespace Emre
 
         public static UnityAction<GameEventResponse> OnLevelLoaded;
         public static UnityAction<GameEventResponse> OnDoorDashed;
+        public static UnityAction<GameEventResponse> OnPlayerDied;
 
         
         public static void RaiseLoadedSongToggle(bool isOn)
@@ -100,7 +101,14 @@ namespace Emre
                 gateValue = gateValue
             });
         }
-        
+
+        public static void RaisePlayerDied(PlayerController player)
+        {
+            OnPlayerDied?.Invoke(new GameEventResponse()
+            {
+                diedPlayer = player
+            });
+        }
     }
 
 
@@ -116,5 +124,6 @@ namespace Emre
         public int currentLevel;
         public GateOperator gateOperator;
         public int gateValue;
+        public PlayerController diedPlayer;
     }
 }

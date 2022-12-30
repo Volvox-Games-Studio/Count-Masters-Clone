@@ -21,6 +21,8 @@ namespace Emre
         [SerializeField] private Sprite activeCoinSprite;
         [SerializeField] private Sprite inactiveSprite;
         [SerializeField] private Sprite inactiveCoinSprite;
+        [SerializeField] private AudioSource upgradeSucceedSound;
+        [SerializeField] private AudioSource upgradeFailedSound;
 
         [Header("Values")]
         [SerializeField] private int[] costs;
@@ -116,6 +118,8 @@ namespace Emre
                     anchorPos.y = m_StartAnchorPos.y;
                     main.anchoredPosition = anchorPos;
                 });
+            
+            upgradeFailedSound.Play();
         }
 
         private void OnUpgradeSucceed()
@@ -128,6 +132,8 @@ namespace Emre
 
             m_SizeTween
                 .SetEase(punchCurve);
+            
+            upgradeSucceedSound.Play();
         }
     }
 }

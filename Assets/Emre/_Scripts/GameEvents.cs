@@ -14,6 +14,8 @@ namespace Emre
         public static UnityAction<GameEventResponse> OnCoinAmountChanged;
         public static UnityAction<GameEventResponse> OnGemAmountChanged;
 
+        public static UnityAction<GameEventResponse> OnColorWheelSpin;
+
         public static UnityAction<GameEventResponse> OnDoorDashed;
 
         
@@ -64,6 +66,14 @@ namespace Emre
                 gemAmount = amount
             });
         }
+
+        public static void RaiseColorWheelSpin(int index)
+        {
+            OnColorWheelSpin?.Invoke(new GameEventResponse()
+            {
+                colorWheelIndex = index
+            });
+        }
         
         public static void RaiseDoorDashed(GateOperator gateOperator, int gateValue)
         {
@@ -84,6 +94,7 @@ namespace Emre
         public bool isVibrationOn;
         public int coinAmount;
         public int gemAmount;
+        public int colorWheelIndex;
         public GateOperator gateOperator;
         public int gateValue;
     }

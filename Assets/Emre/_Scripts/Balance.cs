@@ -29,6 +29,11 @@ namespace Emre
         }
 
 
+        public static bool HasEnoughCoin(int amount)
+        {
+            return CoinAmount >= amount;
+        }
+        
         public static void AddCoin(int amount)
         {
             CoinAmount += amount;
@@ -42,6 +47,11 @@ namespace Emre
 
             CoinAmount = coinAmount - amount;
             return true;
+        }
+
+        public static bool HasEnoughGem(int amount)
+        {
+            return GemAmount >= amount;
         }
         
         public static void AddGem(int amount)

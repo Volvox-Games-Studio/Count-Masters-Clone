@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Missile
   - Stickman
+  - FallDetector
   layers:
   - Default
   - TransparentFX

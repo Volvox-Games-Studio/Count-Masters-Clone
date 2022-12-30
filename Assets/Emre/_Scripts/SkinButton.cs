@@ -17,6 +17,7 @@ namespace Emre
         [SerializeField] private RectTransform main;
         [SerializeField] private GameObject lockedGameObject;
         [SerializeField] private GameObject selectedGameObject;
+        [SerializeField] private AudioSource lockedSound;
 
         [Header("Values")]
         [SerializeField] private AnimationCurve punchCurve;
@@ -89,6 +90,7 @@ namespace Emre
             if (State == SkinButtonState.Locked)
             {
                 DoShake();
+                lockedSound.Play();
                 return false;
             }
 

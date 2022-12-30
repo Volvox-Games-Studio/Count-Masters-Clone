@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using EmreBeratKR.DummyAds;
@@ -12,6 +11,8 @@ namespace Emre
     {
         [Header("References")]
         [SerializeField] private RectTransform pages;
+        [SerializeField] private AudioSource skinUnlockSound;
+        [SerializeField] private AudioSource skinSelectSound;
 
         [Header("Values")] 
         [SerializeField, Min(0f)] private float pageSwitchDuration;
@@ -124,6 +125,8 @@ namespace Emre
                 
                 if (isOldSelectedSkin) skinButton.Deselect();
             }
+            
+            skinSelectSound.Play();
         }
 
         public void OnCoinAmountLoaded(int amount)
@@ -168,6 +171,8 @@ namespace Emre
             
             SelectedButton.Deselect();
             RandomLockedButtonFromCurrentPage.Unlock();
+            
+            skinUnlockSound.Play();
         }
 
 

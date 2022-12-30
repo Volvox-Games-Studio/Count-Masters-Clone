@@ -994,6 +994,7 @@ GameObject:
   - component: {fileID: 123029426}
   - component: {fileID: 123029428}
   - component: {fileID: 123029427}
+  - component: {fileID: 123029429}
   m_Layer: 5
   m_Name: Left Arrow
   m_TagString: Untagged
@@ -1059,6 +1060,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 123029425}
   m_CullTransparentMesh: 1
+--- !u!114 &123029429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123029425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 0, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &123163688
 GameObject:
   m_ObjectHideFlags: 0
@@ -1571,6 +1587,7 @@ GameObject:
   - component: {fileID: 160903920}
   - component: {fileID: 160903922}
   - component: {fileID: 160903921}
+  - component: {fileID: 160903923}
   m_Layer: 5
   m_Name: Stick
   m_TagString: Untagged
@@ -1636,6 +1653,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160903919}
   m_CullTransparentMesh: 1
+--- !u!114 &160903923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160903919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 0, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &219723818 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3568912739609596093, guid: 0f10cedf4ee51074d98fa93157e23607,
@@ -5173,6 +5205,7 @@ GameObject:
   - component: {fileID: 1133072539}
   - component: {fileID: 1133072541}
   - component: {fileID: 1133072540}
+  - component: {fileID: 1133072542}
   m_Layer: 5
   m_Name: Hand
   m_TagString: Untagged
@@ -5238,6 +5271,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1133072538}
   m_CullTransparentMesh: 1
+--- !u!114 &1133072542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133072538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 0, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &1164352220
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6056,6 +6104,7 @@ GameObject:
   - component: {fileID: 1420821386}
   - component: {fileID: 1420821388}
   - component: {fileID: 1420821387}
+  - component: {fileID: 1420821389}
   m_Layer: 5
   m_Name: Right Arrow
   m_TagString: Untagged
@@ -6121,6 +6170,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1420821385}
   m_CullTransparentMesh: 1
+--- !u!114 &1420821389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420821385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 0, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1428875005
 GameObject:
   m_ObjectHideFlags: 0

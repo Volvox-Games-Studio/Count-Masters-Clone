@@ -5,6 +5,7 @@ namespace Emre
     public static class Balance
     {
         private const string CoinAmountKey = "Coin_Amount";
+        private const string GemAmountKey = "Gem_Amount";
 
 
         public static int CoinAmount
@@ -14,6 +15,16 @@ namespace Emre
             {
                 PlayerPrefs.SetInt(CoinAmountKey, value);
                 GameEvents.RaiseCoinAmountChanged(value);
+            }
+        }
+        
+        public static int GemAmount
+        {
+            get => PlayerPrefs.GetInt(GemAmountKey, 0);
+            private set
+            {
+                PlayerPrefs.SetInt(GemAmountKey, value);
+                GameEvents.RaiseGemAmountChanged(value);
             }
         }
 
@@ -30,6 +41,21 @@ namespace Emre
             if (amount > coinAmount) return false;
 
             CoinAmount = coinAmount - amount;
+            return true;
+        }
+        
+        public static void AddGem(int amount)
+        {
+            GemAmount += amount;
+        }
+
+        public static bool TryRemoveGem(int amount)
+        {
+            var gemAmount = GemAmount;
+
+            if (amount > gemAmount) return false;
+
+            GemAmount = gemAmount - amount;
             return true;
         }
     }

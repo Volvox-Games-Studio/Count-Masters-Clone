@@ -2,27 +2,16 @@
 using UnityEngine;
 public class PlayerAttackTrigger : MonoBehaviour
 {
-    [SerializeField] private ArcherEnemyGroup enemy;
-    private int enemyCount;
+    [SerializeField] private GameObject archerEnemyParent;
+    
     private bool isTriggered = false;
     
     
-    private void Start()
-    {
-        enemyCount = enemy.groupCount;
-    }
-    
-    private void OnTriggerEnter(Collider other)         //PLAYER KULENİN YANINA GELDİĞİ ZAMAN TETİKLENİYOR, KULEDEKİ ASKER SAYISI KADAR 
-    {                                                   //PLAYER ÖLÜYOR, SONRA KULE YOK OLUYOR
-        if (!isTriggered)
+    private void OnTriggerEnter(Collider other)         //TODO Player'ın enemy türlerine göre atak davranışları eklenecek 
+    {                                                   
+        if (!isTriggered && other.CompareTag("Player"))
         {
-            isTriggered = true;
-            for (int i = 1; i <= enemyCount; i++)
-            {
-                PlayerSpawner.players.Remove(PlayerSpawner.players[^i]);
-                Destroy(PlayerSpawner.players[^i].gameObject);
-            }
-            Destroy(enemy.gameObject);
+            Destroy(archerEnemyParent.gameObject);
         }
         
     }

@@ -8,6 +8,8 @@ namespace Emre
     {
         [Header("References")]
         [SerializeField] private RectTransform ferrisWheel;
+        [SerializeField] private AudioSource ferrisWheelSound;
+        [SerializeField] private AudioSource colorChangeSound;
 
         [Header("Values")]
         [SerializeField] private float spinningSpeed;
@@ -40,6 +42,27 @@ namespace Emre
             m_RotationTween
                 .SetSpeedBased()
                 .SetLoops(40, LoopType.Incremental)
+                .OnStart(() =>
+                {
+                    ferrisWheelSound.Play();
+                })
+                .OnComplete(() =>
+                {
+                    SnapToBar();
+                });
+
+            return true;
+        }
+
+        private void SnapToBar()
+        {
+            var factor = (int) Angle / 36 + 1;
+            var snappedAngle = factor * 36;
+
+            m_RotationTween = ferrisWheel.DORotate(Vector3.forward * snappedAngle, spinningSpeed);
+
+            m_RotationTween
+                .SetSpeedBased()
                 .OnComplete(() =>
                 {
                     m_IsSpinning = false;
@@ -48,11 +71,12 @@ namespace Emre
                         > 342 => 0,
                         _ => (int) (Angle + 18) / 36
                     };
-                    
-                    GameEvents.RaiseColorWheelSpin(result);
-                });
 
-            return true;
+                    GameEvents.RaiseColorWheelSpin(result);
+
+                    ferrisWheelSound.Stop();
+                    colorChangeSound.Play();
+                });
         }
     }
 }

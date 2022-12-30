@@ -10,6 +10,9 @@ namespace Emre
         public static UnityAction<GameEventResponse> OnSoundToggle;
         public static UnityAction<GameEventResponse> OnLoadedVibrationToggle;
         public static UnityAction<GameEventResponse> OnVibrationToggle;
+
+        public static UnityAction<GameEventResponse> OnCoinAmountChanged;
+
         public static UnityAction<GameEventResponse> OnDoorDashed;
 
         public static void RaiseLoadedSongToggle(bool isOn)
@@ -44,6 +47,14 @@ namespace Emre
             });
         }
 
+        public static void RaiseCoinAmountChanged(int amount)
+        {
+            OnCoinAmountChanged?.Invoke(new GameEventResponse()
+            {
+                coinAmount = amount
+            });
+        }
+        
         public static void RaiseDoorDashed(GateOperator gateOperator, int gateValue)
         {
             OnDoorDashed?.Invoke(new GameEventResponse()
@@ -61,6 +72,7 @@ namespace Emre
     {
         public bool isSoundOn;
         public bool isVibrationOn;
+        public int coinAmount;
         public GateOperator gateOperator;
         public int gateValue;
     }

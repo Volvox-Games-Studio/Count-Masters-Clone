@@ -1988,7 +1988,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 150}
-  m_SizeDelta: {x: 0, y: 640}
+  m_SizeDelta: {x: 0, y: 567.48}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &362415300
 MonoBehaviour:
@@ -2003,11 +2003,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 150
-    m_Right: 150
+    m_Left: 170
+    m_Right: 170
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 4
+  m_ChildAlignment: 1
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -2386,10 +2386,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 362415299}
     m_Modifications:
+    - target: {fileID: 2087049152, guid: 4f11b78f940561e479e2e65310c242b1, type: 3}
+      propertyPath: m_text
+      value: Income
+      objectReference: {fileID: 0}
     - target: {fileID: 1716068614747245760, guid: 4f11b78f940561e479e2e65310c242b1,
         type: 3}
       propertyPath: m_Name
-      value: Upgrade Button (1)
+      value: Income Upgrade
       objectReference: {fileID: 0}
     - target: {fileID: 1716068614747245767, guid: 4f11b78f940561e479e2e65310c242b1,
         type: 3}
@@ -2429,12 +2433,12 @@ PrefabInstance:
     - target: {fileID: 1716068614747245767, guid: 4f11b78f940561e479e2e65310c242b1,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 300
+      value: 360
       objectReference: {fileID: 0}
     - target: {fileID: 1716068614747245767, guid: 4f11b78f940561e479e2e65310c242b1,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 360
+      value: 432
       objectReference: {fileID: 0}
     - target: {fileID: 1716068614747245767, guid: 4f11b78f940561e479e2e65310c242b1,
         type: 3}
@@ -2496,6 +2500,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1716068615823108059, guid: 4f11b78f940561e479e2e65310c242b1,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 11be7baa9f6e0ea47a9ecb69eb9704f1,
+        type: 3}
+    - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
+        type: 3}
+      propertyPath: saveKey
+      value: Income_Key
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
+        type: 3}
+      propertyPath: activeSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 11be7baa9f6e0ea47a9ecb69eb9704f1,
+        type: 3}
+    - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
+        type: 3}
+      propertyPath: inactiveSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1fefa120b516f124aa287cabab4eab73,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f11b78f940561e479e2e65310c242b1, type: 3}
 --- !u!224 &453611899 stripped
@@ -6491,10 +6518,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 362415299}
     m_Modifications:
+    - target: {fileID: 2087049152, guid: 4f11b78f940561e479e2e65310c242b1, type: 3}
+      propertyPath: m_text
+      value: Start Units
+      objectReference: {fileID: 0}
     - target: {fileID: 1716068614747245760, guid: 4f11b78f940561e479e2e65310c242b1,
         type: 3}
       propertyPath: m_Name
-      value: Upgrade Button
+      value: Start Units Upgrade
       objectReference: {fileID: 0}
     - target: {fileID: 1716068614747245767, guid: 4f11b78f940561e479e2e65310c242b1,
         type: 3}
@@ -6534,12 +6565,12 @@ PrefabInstance:
     - target: {fileID: 1716068614747245767, guid: 4f11b78f940561e479e2e65310c242b1,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 300
+      value: 360
       objectReference: {fileID: 0}
     - target: {fileID: 1716068614747245767, guid: 4f11b78f940561e479e2e65310c242b1,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 360
+      value: 432
       objectReference: {fileID: 0}
     - target: {fileID: 1716068614747245767, guid: 4f11b78f940561e479e2e65310c242b1,
         type: 3}
@@ -6601,6 +6632,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
+        type: 3}
+      propertyPath: saveKey
+      value: Start_Units_Key
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
+        type: 3}
+      propertyPath: activeSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 97e982230a5131e4ab3225049f93e4ff,
+        type: 3}
+    - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
+        type: 3}
+      propertyPath: inactiveSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d15c400a4d335b44fa4fba1d75222e58,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f11b78f940561e479e2e65310c242b1, type: 3}
 --- !u!1001 &1980800292163078137

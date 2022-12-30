@@ -7,6 +7,7 @@ TagManager:
   - Missile
   - Stickman
   - FallDetector
+  - Obstacle
   layers:
   - Default
   - TransparentFX

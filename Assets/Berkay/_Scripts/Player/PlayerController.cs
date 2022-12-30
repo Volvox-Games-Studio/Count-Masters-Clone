@@ -1,5 +1,4 @@
 ﻿using System;
-using Berkay._Scripts.PlayerGroup;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -13,10 +12,12 @@ public class PlayerController : MonoBehaviour
         PlayerSpawner.players.Add(this);
     }
 
-    private void TryMoveMiddle()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.CompareTag("Obstacle"))
+        {
+            PlayerSpawner.players.Remove(this);
+            Destroy(gameObject);
+        }
     }
-
-   
 }

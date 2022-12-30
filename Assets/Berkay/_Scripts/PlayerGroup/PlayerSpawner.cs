@@ -3,10 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Emre;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-namespace Berkay._Scripts.PlayerGroup
-{
-    public class PlayerSpawner : MonoBehaviour
+public class PlayerSpawner : MonoBehaviour
     {
         [SerializeField] private PlayerController playerPrefab;
         public static List<PlayerController> players = new List<PlayerController>();
@@ -33,18 +32,25 @@ namespace Berkay._Scripts.PlayerGroup
             {
                 for (int i = 0; i < gameEventResponse.gateValue; i++)
                 {
-                     Instantiate(playerPrefab, transform.position, Quaternion.identity, transform);
+                    var randX = Random.Range(-5, 5);
+                    var randZ = Random.Range(-2, 2);
+                    var randVec = new Vector3(randX, 0, randZ);
+                    var spawnPos = players[0].transform.position + randVec;
+                    Instantiate(playerPrefab, spawnPos, Quaternion.identity, transform);
                 }
             }
             else
             {
                 for (int i = 0; i < oldPlayerCount * gameEventResponse.gateValue - oldPlayerCount ; i++)
                 {
-                    Instantiate(playerPrefab, transform.position, Quaternion.identity, transform);
+                    var randX = Random.Range(-5, 5);
+                    var randZ = Random.Range(-2, 2);
+                    var randVec = new Vector3(randX, 0, randZ);
+                    var spawnPos = players[0].transform.position + randVec;
+                    Instantiate(playerPrefab, spawnPos, Quaternion.identity, transform);
                 }
             }
 
             oldPlayerCount = PlayerGroupController.GroupCount;
         }
     }
-}

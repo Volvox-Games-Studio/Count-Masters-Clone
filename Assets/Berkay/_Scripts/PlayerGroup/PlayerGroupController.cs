@@ -6,13 +6,12 @@ using UnityEngine;
 public class PlayerGroupController : MonoBehaviour
 { 
     public static PlayerGroupState PlayerGroupState;
-    public static int GroupCount = 1;
+    public static int GroupCount;
     
     private void Start()
     {
         PlayerGroupState = PlayerGroupState.Waiting;
     }
-    
 
     public void StartGame() //START GAME BUTTON'DAN CAGİRİLACAK ARKADAS
     {
@@ -43,11 +42,7 @@ public class PlayerGroupController : MonoBehaviour
 
     private void Update() //TEST CODE
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            StartGame();
-        }
-        
+        GroupCount = PlayerSpawner.players.Count;
         Debug.Log(GroupCount);
     }
 }

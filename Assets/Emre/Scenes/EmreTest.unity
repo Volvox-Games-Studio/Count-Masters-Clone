@@ -1504,6 +1504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8680b5aa72ea78145a224312da20b92f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelField: {fileID: 1931411283}
   onCoinAmountLoaded:
     m_PersistentCalls:
       m_Calls:
@@ -2353,10 +2354,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5966614700066202751, guid: 6d68247ced74a094aa889fa9a0d76aab,
         type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 4550512804970200221, guid: 85af64b47fe8de54d883c980d12a9d04,
-        type: 2}
+      propertyPath: m_fontSize
+      value: 47
+      objectReference: {fileID: 0}
     - target: {fileID: 5966614700396215796, guid: 6d68247ced74a094aa889fa9a0d76aab,
         type: 3}
       propertyPath: m_Name
@@ -7278,8 +7278,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Level 99
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 85af64b47fe8de54d883c980d12a9d04, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: b6ccd456a5a406f4b84f8360d8501f8a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9319,10 +9319,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5966614700066202751, guid: 6d68247ced74a094aa889fa9a0d76aab,
         type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 4550512804970200221, guid: 85af64b47fe8de54d883c980d12a9d04,
-        type: 2}
+      propertyPath: m_fontSize
+      value: 47
+      objectReference: {fileID: 0}
     - target: {fileID: 5966614700396215796, guid: 6d68247ced74a094aa889fa9a0d76aab,
         type: 3}
       propertyPath: m_Name

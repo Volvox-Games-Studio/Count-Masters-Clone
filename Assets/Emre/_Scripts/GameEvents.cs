@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 using UnityEngine.Events;
 
 namespace Emre
@@ -17,6 +16,7 @@ namespace Emre
         public static UnityAction<GameEventResponse> OnColorWheelSpin;
         public static UnityAction<GameEventResponse> OnSkinChanged;
 
+        public static UnityAction<GameEventResponse> OnLevelLoaded;
         public static UnityAction<GameEventResponse> OnDoorDashed;
 
         
@@ -83,6 +83,14 @@ namespace Emre
                 skinIndex = index
             });
         }
+
+        public static void RaiseLevelLoaded(int level)
+        {
+            OnLevelLoaded?.Invoke(new GameEventResponse()
+            {
+                currentLevel = level
+            });
+        }
         
         public static void RaiseDoorDashed(GateOperator gateOperator, int gateValue)
         {
@@ -105,6 +113,7 @@ namespace Emre
         public int gemAmount;
         public int colorWheelIndex;
         public int skinIndex;
+        public int currentLevel;
         public GateOperator gateOperator;
         public int gateValue;
     }

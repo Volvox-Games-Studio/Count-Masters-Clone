@@ -23,15 +23,13 @@ public class PlayerColorController : MonoBehaviour
     [SerializeField] private Material[] colors;
     [SerializeField] private SkinnedMeshRenderer skinnedMeshRenderer;
 
-    public static PlayerColor PlayerColor = PlayerColor.DarkBlue; //PLAYERIN RENGİNİ DEĞİŞTİRMEK İSTENİLDİĞİ YERDE BU ARKADAŞ ÇAĞIRILACAK
-    private static int ActiveColor = 0;
-
+    public static PlayerColor PlayerColor = PlayerColor.DarkBlue;
     
-    private void SetColor()
+    
+    public void SetColor()
     {
         skinnedMeshRenderer.material = colors[(int)PlayerColor];
     }
-
 
     private void Update()
     {

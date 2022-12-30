@@ -119,6 +119,8 @@ public class UpgradeButton : MonoBehaviour
 
     private void OnUpgradeSucceed()
     {
+        UpdateFields();
+        
         m_SizeTween?.Kill();
         m_SizeTween = main.DOScale(Vector3.one, punchDuration)
             .From(shrinkSize);

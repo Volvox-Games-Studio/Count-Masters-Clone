@@ -29,7 +29,7 @@ namespace Emre
 
             if (amount > coinAmount) return false;
 
-            CoinAmount = coinAmount + amount;
+            CoinAmount = coinAmount - amount;
             return true;
         }
     }

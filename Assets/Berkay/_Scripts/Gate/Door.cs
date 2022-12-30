@@ -29,7 +29,14 @@ public class Door : MonoBehaviour
         boxCollider = GetComponentInChildren<BoxCollider>();
         UpdateText();
     }
-    
+
+    private void Update()
+    {
+        if (isEntered)
+        {
+            BeUnInteractable();
+        }
+    }
 
     private void UpdateText()
     {
@@ -45,7 +52,7 @@ public class Door : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !isEntered)
         {
             isEntered = true;
             GameEvents.RaiseDoorDashed(gateOperator, value);

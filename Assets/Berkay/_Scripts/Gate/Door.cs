@@ -9,7 +9,6 @@ public enum GateOperator
 {
     Add,
     Mult
-    
 }
 
 public class Door : MonoBehaviour
@@ -31,10 +30,6 @@ public class Door : MonoBehaviour
         UpdateText();
     }
     
-    private void Update()
-    {
-        BeUnInteractable();
-    }
 
     private void UpdateText()
     {
@@ -50,10 +45,8 @@ public class Door : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Bİ ŞEYLER GİRDİ"); 
         if (other.CompareTag("Player"))
         {
-            Debug.Log("PLAYER GİRDİ");
             isEntered = true;
             GameEvents.RaiseDoorDashed(gateOperator, value);
         }

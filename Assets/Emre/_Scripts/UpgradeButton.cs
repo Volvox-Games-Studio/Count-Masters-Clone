@@ -5,12 +5,20 @@ using UnityEngine.UI;
 
 namespace Emre
 {
+    public enum UpgradeType
+    {
+        StartUnits,
+        Income
+    }
+    
+    
     public class UpgradeButton : MonoBehaviour
     {
         private const string Max = "Max";
 
 
         [Header("References")] 
+        [SerializeField] private UpgradeDataProvider dataProvider;
         [SerializeField] private RectTransform main;
         [SerializeField] private TMP_Text levelField;
         [SerializeField] private TMP_Text costField;
@@ -24,15 +32,17 @@ namespace Emre
         [SerializeField] private AudioSource upgradeSucceedSound;
         [SerializeField] private AudioSource upgradeFailedSound;
 
-        [Header("Values")]
-        [SerializeField] private int[] costs;
-        [SerializeField] private string saveKey;
+        [Header("Values")] 
+        [SerializeField] private UpgradeType type;
         [SerializeField] private AnimationCurve punchCurve;
         [SerializeField, Min(0f)] private float shakeDuration;
         [SerializeField, Min(0f)] private float punchDuration;
         [SerializeField, Min(0f)] private float shrinkSize;
 
 
+        private string SaveKey => $"Upgrade_{type}";
+
+        
         private Vector2 m_StartAnchorPos;
         private Tween m_AnchorPosTween;
         private Tween m_SizeTween;
@@ -40,8 +50,8 @@ namespace Emre
 
         private int Level
         {
-            get => PlayerPrefs.GetInt(saveKey, 1);
-            set => PlayerPrefs.SetInt(saveKey, value);
+            get => PlayerPrefs.GetInt(SaveKey, 1);
+            set => PlayerPrefs.SetInt(SaveKey, value);
         }
     
         private bool Upgradable
@@ -55,8 +65,9 @@ namespace Emre
         }
     
         private int LevelIndex => Level - 1;
-        private int CurrentCost => costs[LevelIndex];
-        private bool IsMaxed => LevelIndex >= costs.Length;
+        private int CurrentCost => (int) dataProvider.GetCost(Level);
+        private float CurrentValue => dataProvider.GetValue(Level);
+        private bool IsMaxed => Level >= dataProvider.LevelCount;
 
     
         private void Start()
@@ -135,6 +146,17 @@ namespace Emre
         private void OnUpgradeSucceed()
         {
             UpdateFields();
+
+            switch (type)
+            {
+                case UpgradeType.StartUnits:
+                    GameEvents.RaiseStartUnitsUpgraded((int) CurrentValue);
+                    break;
+                
+                case UpgradeType.Income:
+                    GameEvents.RaiseIncomeUpgraded(CurrentValue);
+                    break;
+            }
         
             m_SizeTween?.Kill();
             m_SizeTween = main.DOScale(Vector3.one, punchDuration)

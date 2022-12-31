@@ -7180,6 +7180,12 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
         type: 3}
+      propertyPath: dataProvider
+      value: 
+      objectReference: {fileID: 11400000, guid: 76de73207cdca1440ab51b2bc601874e,
+        type: 2}
+    - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
+        type: 3}
       propertyPath: inactiveSprite
       value: 
       objectReference: {fileID: 21300000, guid: d15c400a4d335b44fa4fba1d75222e58,
@@ -8646,6 +8652,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
         type: 3}
+      propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
+        type: 3}
       propertyPath: saveKey
       value: Income_Key
       objectReference: {fileID: 0}
@@ -8655,6 +8666,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 11be7baa9f6e0ea47a9ecb69eb9704f1,
         type: 3}
+    - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
+        type: 3}
+      propertyPath: dataProvider
+      value: 
+      objectReference: {fileID: 11400000, guid: 92bf90427b009e947a716f03c74ff337,
+        type: 2}
     - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
         type: 3}
       propertyPath: inactiveSprite

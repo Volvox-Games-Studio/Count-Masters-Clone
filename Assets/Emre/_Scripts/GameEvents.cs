@@ -16,6 +16,9 @@ namespace Emre
         public static UnityAction<GameEventResponse> OnColorWheelSpin;
         public static UnityAction<GameEventResponse> OnSkinChanged;
 
+        public static UnityAction<GameEventResponse> OnStartUnitsUpgraded;
+        public static UnityAction<GameEventResponse> OnIncomeUpgraded;
+
         public static UnityAction<GameEventResponse> OnLevelLoaded;
         public static UnityAction<GameEventResponse> OnDoorDashed;
         public static UnityAction<GameEventResponse> OnPlayerGroupSizeChanged;
@@ -89,6 +92,22 @@ namespace Emre
             });
         }
 
+        public static void RaiseStartUnitsUpgraded(int startUnits)
+        {
+            OnStartUnitsUpgraded?.Invoke(new GameEventResponse()
+            {
+                startUnits = startUnits
+            });
+        }
+
+        public static void RaiseIncomeUpgraded(float incomeMultiplier)
+        {
+            OnIncomeUpgraded?.Invoke(new GameEventResponse()
+            {
+                incomeMultiplier = incomeMultiplier
+            });
+        }
+        
         public static void RaiseLevelLoaded(int level)
         {
             OnLevelLoaded?.Invoke(new GameEventResponse()
@@ -147,6 +166,8 @@ namespace Emre
         public int gemAmount;
         public int colorWheelIndex;
         public int skinIndex;
+        public int startUnits;
+        public float incomeMultiplier;
         public int currentLevel;
         public GateOperator gateOperator;
         public int gateValue;

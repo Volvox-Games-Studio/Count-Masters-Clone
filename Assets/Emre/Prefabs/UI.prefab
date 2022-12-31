@@ -2156,6 +2156,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3346533469696806683}
+        m_TargetAssemblyTypeName: Emre.UpgradeButton, Assembly-CSharp
+        m_MethodName: OnCoinAmountLoaded
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4152869874698290562}
+        m_TargetAssemblyTypeName: Emre.UpgradeButton, Assembly-CSharp
+        m_MethodName: OnCoinAmountLoaded
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onCoinAmountChanged:
     m_PersistentCalls:
       m_Calls:
@@ -2185,6 +2209,30 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 6904123297351948644}
         m_TargetAssemblyTypeName: Emre.SkinStore, Assembly-CSharp
+        m_MethodName: OnCoinAmountChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3346533469696806683}
+        m_TargetAssemblyTypeName: Emre.UpgradeButton, Assembly-CSharp
+        m_MethodName: OnCoinAmountChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4152869874698290562}
+        m_TargetAssemblyTypeName: Emre.UpgradeButton, Assembly-CSharp
         m_MethodName: OnCoinAmountChanged
         m_Mode: 0
         m_Arguments:
@@ -7136,8 +7184,80 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: d15c400a4d335b44fa4fba1d75222e58,
         type: 3}
+    - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
+        type: 3}
+      propertyPath: costs.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
+        type: 3}
+      propertyPath: costs.Array.data[0]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
+        type: 3}
+      propertyPath: costs.Array.data[1]
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
+        type: 3}
+      propertyPath: costs.Array.data[2]
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
+        type: 3}
+      propertyPath: costs.Array.data[3]
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
+        type: 3}
+      propertyPath: costs.Array.data[4]
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
+        type: 3}
+      propertyPath: costs.Array.data[5]
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
+        type: 3}
+      propertyPath: costs.Array.data[6]
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
+        type: 3}
+      propertyPath: costs.Array.data[7]
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
+        type: 3}
+      propertyPath: costs.Array.data[8]
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
+        type: 3}
+      propertyPath: costs.Array.data[9]
+      value: 2500
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
+        type: 3}
+      propertyPath: costs.Array.data[10]
+      value: 5000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f11b78f940561e479e2e65310c242b1, type: 3}
+--- !u!114 &3346533469696806683 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
+    type: 3}
+  m_PrefabInstance: {fileID: 5188407213418193003}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5b9512f05852404e8ea7bc92ff15736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6904123297247095980 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1716068614747245767, guid: 4f11b78f940561e479e2e65310c242b1,
@@ -8541,8 +8661,80 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 1fefa120b516f124aa287cabab4eab73,
         type: 3}
+    - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
+        type: 3}
+      propertyPath: costs.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
+        type: 3}
+      propertyPath: costs.Array.data[0]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
+        type: 3}
+      propertyPath: costs.Array.data[1]
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
+        type: 3}
+      propertyPath: costs.Array.data[2]
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
+        type: 3}
+      propertyPath: costs.Array.data[3]
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
+        type: 3}
+      propertyPath: costs.Array.data[4]
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
+        type: 3}
+      propertyPath: costs.Array.data[5]
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
+        type: 3}
+      propertyPath: costs.Array.data[6]
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
+        type: 3}
+      propertyPath: costs.Array.data[7]
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
+        type: 3}
+      propertyPath: costs.Array.data[8]
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
+        type: 3}
+      propertyPath: costs.Array.data[9]
+      value: 2500
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
+        type: 3}
+      propertyPath: costs.Array.data[10]
+      value: 5000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f11b78f940561e479e2e65310c242b1, type: 3}
+--- !u!114 &4152869874698290562 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7381868914778992496, guid: 4f11b78f940561e479e2e65310c242b1,
+    type: 3}
+  m_PrefabInstance: {fileID: 6904123297151478514}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5b9512f05852404e8ea7bc92ff15736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5188407213319956021 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1716068614747245767, guid: 4f11b78f940561e479e2e65310c242b1,

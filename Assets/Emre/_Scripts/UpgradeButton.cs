@@ -71,6 +71,16 @@ namespace Emre
             TryUpgrade();
         }
 
+        public void OnCoinAmountLoaded(int amount)
+        {
+            UpdateFields();
+        }
+
+        public void OnCoinAmountChanged(int amount)
+        {
+            UpdateFields();
+        }
+
 
         private void UpdateFields()
         {

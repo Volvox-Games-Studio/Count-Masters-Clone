@@ -21,7 +21,7 @@ public class PlayerGroupMover : MonoBehaviour
     private bool isMoving;
 
 
-    private void OnEnable()
+    private void Awake()
     {
         GameEvents.OnPlayerGroupStateChanged += OnPlayerGroupStateChanged;
     }
@@ -42,8 +42,8 @@ public class PlayerGroupMover : MonoBehaviour
     {
         isMoving = response.playerGroupState == PlayerGroupState.Walking;
     }
-    
-    
+
+
     private void Move()
     {
         if (!isMoving) return;
@@ -54,13 +54,15 @@ public class PlayerGroupMover : MonoBehaviour
     
     private void MoveForward()
     {
-        transform.Translate( Vector3.forward * verticalSpeed * Time.deltaTime);
+        transform.Translate(Vector3.forward * (verticalSpeed * Time.deltaTime));
     }
 
     private void MoveHorizontal()
     {
         horizontalInput = joystick.Horizontal;
-        
-        transform.Translate(Vector3.right * horizontalInput * horizontalSpeed * Time.deltaTime);
+        var delta = Vector3.right * (horizontalInput * horizontalSpeed * Time.deltaTime);
+        var newPosition = transform.position + delta;
+        newPosition.x = Mathf.Clamp(newPosition.x, PlayerSpawner.LeftBorder, PlayerSpawner.RightBorder);
+        transform.position = newPosition;
     }
 }

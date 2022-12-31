@@ -1586,7 +1586,7 @@ MonoBehaviour:
   playerPrefab: {fileID: -8455596341821508186, guid: c601def52cbf1d34b9b5debcb2bf1c61,
     type: 3}
   distanceFactor: 0.35
-  radius: 1
+  radiusFactor: 1
   dieFormatDelay: 1
 --- !u!1 &1375217428
 GameObject:

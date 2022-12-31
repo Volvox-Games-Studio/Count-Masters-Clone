@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Min(0f)] private float dieFormatDuration;
 
 
+    public Vector3 LocalPosition => transform.localPosition;
+    
+
     private Tween moveTween;
 
 

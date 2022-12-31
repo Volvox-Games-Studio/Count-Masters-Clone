@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using DG.Tweening;
 using Emre;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class PlayerSpawner : MonoBehaviour
 {
         private const int MaxSpawnCountPerFrame = 50;
+        private const float XMax = 7.5f;
         
         
         [SerializeField] private PlayerController playerPrefab;
         [SerializeField] private float distanceFactor;
-        [SerializeField] private float radius;
+        [SerializeField] private float radiusFactor;
         [SerializeField] private float dieFormatDelay;
         public static List<PlayerController> players = new List<PlayerController>();
         private int oldPlayerCount;
@@ -21,6 +19,53 @@ public class PlayerSpawner : MonoBehaviour
         private float lastPlayerDiedTime;
         private bool formatedAfterPlayerDied = true;
 
+
+        public static float LeftBorder
+        {
+            get
+            {
+                if (Size <= 0) return -XMax;
+                
+                var record = players[0].LocalPosition.x;
+
+                for (int i = 1; i < Size; i++)
+                {
+                    var x = players[i].LocalPosition.x;
+                    
+                    if (x > record) continue;
+
+                    record = x;
+                }
+
+                return -XMax - record;
+            }
+        }
+        
+        public static float RightBorder
+        {
+            get
+            {
+                if (Size <= 0) return XMax;
+                
+                var record = players[0].LocalPosition.x;
+
+                for (int i = 1; i < Size; i++)
+                {
+                    var x = players[i].LocalPosition.x;
+                    
+                    if (x < record) continue;
+
+                    record = x;
+                }
+
+                return XMax - record;
+            }
+        }
+        
+
+        private float Radius => IndexToLocalPosition(Size - 1).magnitude;
+        private static int Size => players.Count;
+        
         
         private void Start()
         {
@@ -28,6 +73,8 @@ public class PlayerSpawner : MonoBehaviour
             {
                 SpawnNewPlayer();
             }
+            
+            GameEvents.RaisePlayerGroupSizeChanged(Size, Radius);
         }
 
         private void Update()
@@ -69,6 +116,7 @@ public class PlayerSpawner : MonoBehaviour
             {
                 FormatPlayers(true);
                 formatedAfterPlayerDied = true;
+                GameEvents.RaisePlayerGroupSizeChanged(Size, Radius);
                 return true;
             }
 
@@ -98,8 +146,8 @@ public class PlayerSpawner : MonoBehaviour
                     if (i % MaxSpawnCountPerFrame == 0) yield return null;
                 }
                 
-                GameEvents.RaisePlayerGroupExpanded(newPlayerCount);
                 FormatPlayers(false);
+                GameEvents.RaisePlayerGroupSizeChanged(newPlayerCount, Radius);
             }
         }
         
@@ -112,15 +160,18 @@ public class PlayerSpawner : MonoBehaviour
         
         private void FormatPlayers(bool afterDied)
         {
-            for (int i = 0; i < players.Count; i++)
+            for (int i = 0; i < Size; i++)
             {
-                var x = distanceFactor * Mathf.Sqrt(i) * Mathf.Cos(i * radius);
-                var z = distanceFactor * Mathf.Sqrt(i) * Mathf.Sin(i * radius);
-            
-                var position = new Vector3(x, 0f, z);
                 var player = players[i];
-
-                player.Format(position, afterDied);
+                var localPosition = IndexToLocalPosition(i);
+                player.Format(localPosition, afterDied);
             }
+        }
+
+        private Vector3 IndexToLocalPosition(int index)
+        {
+            var x = distanceFactor * Mathf.Sqrt(index) * Mathf.Cos(index * radiusFactor);
+            var z = distanceFactor * Mathf.Sqrt(index) * Mathf.Sin(index * radiusFactor);
+            return new Vector3(x, 0f, z);
         }
     }

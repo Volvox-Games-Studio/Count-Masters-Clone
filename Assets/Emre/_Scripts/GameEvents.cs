@@ -18,7 +18,7 @@ namespace Emre
 
         public static UnityAction<GameEventResponse> OnLevelLoaded;
         public static UnityAction<GameEventResponse> OnDoorDashed;
-        public static UnityAction<GameEventResponse> OnPlayerGroupExpanded;
+        public static UnityAction<GameEventResponse> OnPlayerGroupSizeChanged;
         public static UnityAction<GameEventResponse> OnPlayerDied;
         public static UnityAction<GameEventResponse> OnPlayerGroupStateChanged;
 
@@ -106,11 +106,12 @@ namespace Emre
             });
         }
 
-        public static void RaisePlayerGroupExpanded(int size)
+        public static void RaisePlayerGroupSizeChanged(int size, float radius)
         {
-            OnPlayerGroupExpanded?.Invoke(new GameEventResponse()
+            OnPlayerGroupSizeChanged?.Invoke(new GameEventResponse()
             {
-                playerGroupSize = size
+                playerGroupSize = size,
+                playerGroupRadius = radius
             });
         }
         
@@ -150,6 +151,7 @@ namespace Emre
         public GateOperator gateOperator;
         public int gateValue;
         public int playerGroupSize;
+        public float playerGroupRadius;
         public PlayerController diedPlayer;
         public PlayerGroupState playerGroupState;
     }

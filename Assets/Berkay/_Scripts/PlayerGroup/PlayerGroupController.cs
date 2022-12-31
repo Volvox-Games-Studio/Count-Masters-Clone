@@ -21,13 +21,13 @@ public class PlayerGroupController : MonoBehaviour
     private void Awake()
     {
         GameEvents.OnGameStarted += OnGameStarted;
-        GameEvents.OnPlayerGroupExpanded += OnPlayerGroupExpanded;
+        GameEvents.OnPlayerGroupSizeChanged += OnPlayerGroupSizeChanged;
     }
 
     private void OnDestroy()
     {
         GameEvents.OnGameStarted -= OnGameStarted;
-        GameEvents.OnPlayerGroupExpanded -= OnPlayerGroupExpanded;
+        GameEvents.OnPlayerGroupSizeChanged -= OnPlayerGroupSizeChanged;
     }
 
 
@@ -42,7 +42,7 @@ public class PlayerGroupController : MonoBehaviour
         PlayerGroupState = PlayerGroupState.Walking;
     }
 
-    private void OnPlayerGroupExpanded(GameEventResponse response)
+    private void OnPlayerGroupSizeChanged(GameEventResponse response)
     {
         PlayerGroupState = PlayerGroupState;
     }

@@ -1,4 +1,4 @@
-using System;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,8 +7,15 @@ namespace Emre
 {
     public class InGameUI : MonoBehaviour
     {
-        [Header("References")]
+        [Header("References")] 
+        [SerializeField] private RectTransform leftButtons;
+        [SerializeField] private RectTransform rightButtons;
+        [SerializeField] private RectTransform upgradeButtons;
+        [SerializeField] private GameObject holdAndMove;
         [SerializeField] private TMP_Text levelField;
+
+        [Header("Values")]
+        [SerializeField, Min(0f)] private float hideDuration;
         
         
         public UnityEvent<int> onCoinAmountLoaded;
@@ -25,6 +32,7 @@ namespace Emre
             onGemAmountLoaded?.Invoke(Balance.GemAmount);
             GameEvents.OnGemAmountChanged += OnGemAmountChanged;
 
+            GameEvents.OnGameStarted += OnGameStarted;
             GameEvents.OnLevelLoaded += OnLevelLoaded;
         }
 
@@ -33,10 +41,16 @@ namespace Emre
             GameEvents.OnCoinAmountChanged -= OnCoinAmountChanged;
             GameEvents.OnGemAmountChanged -= OnGemAmountChanged;
             
+            GameEvents.OnGameStarted -= OnGameStarted;
             GameEvents.OnLevelLoaded -= OnLevelLoaded;
         }
-        
 
+
+        private void OnGameStarted(GameEventResponse response)
+        {
+            HideNonGameplayUIs();
+        }
+        
         private void OnCoinAmountChanged(GameEventResponse response)
         {
             onCoinAmountChanged?.Invoke(response.coinAmount);
@@ -50,6 +64,23 @@ namespace Emre
         private void OnLevelLoaded(GameEventResponse response)
         {
             levelField.text = $"Level {response.currentLevel}";
+        }
+
+
+        private void HideNonGameplayUIs()
+        {
+            const float smallButtonsHideRange = 230f;
+
+            leftButtons.DOAnchorPos(Vector2.left * smallButtonsHideRange, hideDuration)
+                .SetEase(Ease.InBack);
+
+            rightButtons.DOAnchorPos(Vector2.right * smallButtonsHideRange, hideDuration)
+                .SetEase(Ease.InBack);
+
+            upgradeButtons.DOAnchorPos(Vector2.down * 500f, hideDuration)
+                .SetEase(Ease.InBack);
+            
+            holdAndMove.SetActive(false);
         }
     }
 }

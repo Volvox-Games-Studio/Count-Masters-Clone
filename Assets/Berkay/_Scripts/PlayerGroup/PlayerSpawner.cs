@@ -14,8 +14,6 @@ public class PlayerSpawner : MonoBehaviour
         [SerializeField] private float radiusFactor;
         [SerializeField] private float dieFormatDelay;
         public static List<PlayerController> players = new List<PlayerController>();
-        private int oldPlayerCount;
-        private int initialPlayerCount = 1;
         private float lastPlayerDiedTime;
         private bool formatedAfterPlayerDied = true;
 
@@ -66,42 +64,46 @@ public class PlayerSpawner : MonoBehaviour
         private float Radius => IndexToLocalPosition(Size - 1).magnitude;
         private static int Size => players.Count;
         
-        
-        private void Start()
+
+        private void Awake()
         {
-            for (int i = 0; i < initialPlayerCount; i++)
-            {
-                SpawnNewPlayer();
-            }
-            
-            GameEvents.RaisePlayerGroupSizeChanged(Size, Radius);
+            GameEvents.OnDoorDashed += OnDoorDashed;
+            GameEvents.OnPlayerDied += OnPlayerDied;
+            GameEvents.OnStartUnitsUpgraded += OnStartUnitsUpgraded;
         }
 
+        private void OnDestroy()
+        {
+            GameEvents.OnDoorDashed -= OnDoorDashed;
+            GameEvents.OnPlayerDied -= OnPlayerDied;
+            GameEvents.OnStartUnitsUpgraded -= OnStartUnitsUpgraded;
+        }
+        
         private void Update()
         {
             TryFormatAfterPlayerDied();
         }
 
-        private void OnEnable()
+
+        private void OnStartUnitsUpgraded(GameEventResponse response)
         {
-            GameEvents.OnDoorDashed += OnDoorDashed;
-            GameEvents.OnPlayerDied += OnPlayerDied;
+            var spawnCount = response.startUnits - Size;
+            
+            for (int i = 0; i < spawnCount; i++)
+            {
+                SpawnNewPlayer();
+            }
+            
+            FormatPlayers(false);
+            GameEvents.RaisePlayerGroupSizeChanged(Size, Radius);
         }
-
-        private void OnDisable()
-        {
-            GameEvents.OnDoorDashed -= OnDoorDashed;
-            GameEvents.OnPlayerDied -= OnPlayerDied;
-        }
-
-
+        
         private void OnPlayerDied(GameEventResponse response)
         {
             lastPlayerDiedTime = Time.time;
             formatedAfterPlayerDied = false;
         }
-        
-        
+
         private void OnDoorDashed(GameEventResponse gameEventResponse)
         {
             UpdatePlayerCount(gameEventResponse.gateOperator, gameEventResponse.gateValue);

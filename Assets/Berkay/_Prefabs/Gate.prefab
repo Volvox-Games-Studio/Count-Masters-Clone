@@ -595,7 +595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gateOperator: 1
-  value: 20
+  value: 5
   doorText: {fileID: 6536430092965593892}
   isEntered: 0
 --- !u!65 &8740487601767893699
@@ -979,7 +979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gateOperator: 0
-  value: 5
+  value: 50
   doorText: {fileID: 5951400432452002881}
   isEntered: 0
 --- !u!65 &7547534439641247382

@@ -63,8 +63,7 @@ namespace Emre
                 upgradeIcon.SetActive(value);
             }
         }
-    
-        private int LevelIndex => Level - 1;
+        
         private int CurrentCost => (int) dataProvider.GetCost(Level);
         private float CurrentValue => dataProvider.GetValue(Level);
         private bool IsMaxed => Level >= dataProvider.LevelCount;
@@ -74,6 +73,7 @@ namespace Emre
         {
             m_StartAnchorPos = main.anchoredPosition;
             UpdateFields();
+            RaiseChange();
         }
     
 
@@ -146,7 +146,20 @@ namespace Emre
         private void OnUpgradeSucceed()
         {
             UpdateFields();
+            RaiseChange();
+        
+            m_SizeTween?.Kill();
+            m_SizeTween = main.DOScale(Vector3.one, punchDuration)
+                .From(shrinkSize);
 
+            m_SizeTween
+                .SetEase(punchCurve);
+            
+            upgradeSucceedSound.Play();
+        }
+        
+        private void RaiseChange()
+        {
             switch (type)
             {
                 case UpgradeType.StartUnits:
@@ -157,15 +170,6 @@ namespace Emre
                     GameEvents.RaiseIncomeUpgraded(CurrentValue);
                     break;
             }
-        
-            m_SizeTween?.Kill();
-            m_SizeTween = main.DOScale(Vector3.one, punchDuration)
-                .From(shrinkSize);
-
-            m_SizeTween
-                .SetEase(punchCurve);
-            
-            upgradeSucceedSound.Play();
         }
     }
 }

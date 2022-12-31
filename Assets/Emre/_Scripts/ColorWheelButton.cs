@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -6,6 +7,9 @@ namespace Emre
 {
     public class ColorWheelButton : MonoBehaviour
     {
+        private const string SkinColorKey = "Skin_Color";
+        
+        
         [Header("References")]
         [SerializeField] private RectTransform ferrisWheel;
         [SerializeField] private AudioSource ferrisWheelSound;
@@ -15,16 +19,44 @@ namespace Emre
         [SerializeField] private float spinningSpeed;
 
 
+        public static int SkinColorIndex
+        {
+            get => PlayerPrefs.GetInt(SkinColorKey, 0);
+            private set
+            {
+                PlayerPrefs.SetInt(SkinColorKey, value);
+                GameEvents.RaiseColorWheelSpin(value);
+            }
+        }
+        
+
         private float RandomAngle => Angle + Random.Range(16f, 31f);
-        private float Angle => ferrisWheel.localEulerAngles.z;
+
+        private float Angle
+        {
+            get => ferrisWheel.localEulerAngles.z;
+            set
+            {
+                var oldLocalEulerAngles = ferrisWheel.localEulerAngles;
+                oldLocalEulerAngles.z = value;
+                ferrisWheel.localEulerAngles = oldLocalEulerAngles;
+            }
+        }
         
         
         private bool m_IsSpinning;
         
 
         private Tween m_RotationTween;
-        
-        
+
+
+        private void Start()
+        {
+            Angle = SkinColorIndex * 36;
+            SkinColorIndex = SkinColorIndex;
+        }
+
+
         public void OnClicked()
         {
             TryStartSpinning();
@@ -72,7 +104,7 @@ namespace Emre
                         _ => (int) (Angle + 18) / 36
                     };
 
-                    GameEvents.RaiseColorWheelSpin(result);
+                    SkinColorIndex = result;
 
                     ferrisWheelSound.Stop();
                     colorChangeSound.Play();

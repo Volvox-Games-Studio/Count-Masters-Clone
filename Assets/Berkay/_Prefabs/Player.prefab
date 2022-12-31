@@ -963,16 +963,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colors:
-  - {fileID: 2100000, guid: 983de47c1bf28e34481e0b2db0a8c5a3, type: 2}
-  - {fileID: 2100000, guid: 45d392952f8f42743a7ee861b2a217a4, type: 2}
-  - {fileID: 2100000, guid: 2e5945fc00c99964fbe3c700c135daee, type: 2}
-  - {fileID: 2100000, guid: 4075e1e215ed5ab418c78c37c45a0ce3, type: 2}
-  - {fileID: 2100000, guid: 61f1ad0718109e940923aa718f473d5f, type: 2}
-  - {fileID: 2100000, guid: 7d80913ff4fe983479906ca8f7795cdc, type: 2}
-  - {fileID: 2100000, guid: e526a6205fda1a7498c1b8407b98b177, type: 2}
-  - {fileID: 2100000, guid: 8571fcb274878d24e9ae824b5aebf91c, type: 2}
-  - {fileID: 2100000, guid: 84b7851ad250639478246e5693c0cfa1, type: 2}
-  - {fileID: 2100000, guid: bda59dde1802bc941baef9b80018449b, type: 2}
+  - {r: 1, g: 0, b: 0.87058824, a: 1.5978554e+25}
+  - {r: 0, g: 0.54901963, b: 1, a: 1}
+  - {r: 0.20784314, g: 1, b: 0, a: 1}
+  - {r: 0, g: 0.8666667, b: 1, a: 2.3795844e+20}
+  - {r: 0.48235294, g: 0.48235294, b: 0.48235294, a: 1}
+  - {r: 1, g: 0.59607846, b: 0, a: 1}
+  - {r: 0.09803922, g: 0.48235294, b: 0.015686275, a: 6.3278543e+22}
+  - {r: 0, g: 0.8666667, b: 1, a: 1}
+  - {r: 0.1882353, g: 0.1882353, b: 0.1882353, a: 1}
+  - {r: 0.8352941, g: 1, b: 0, a: 1}
   skinnedMeshRenderer: {fileID: 8898236289839878450}
 --- !u!1 &7933215241811416493
 GameObject:

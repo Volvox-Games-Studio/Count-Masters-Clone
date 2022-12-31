@@ -1,38 +1,36 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Emre;
 using UnityEngine;
-
-public enum PlayerColor
-{
-    DarkBlue,
-    LightBlue,
-    DarkGreen,
-    LightGreen,
-    Yellow,
-    Orange,
-    Pink,
-    Grey,
-    Metalic,
-    Black
-}
-
 
 public class PlayerColorController : MonoBehaviour
 {
-    [SerializeField] private Material[] colors;
+    [SerializeField] private Color[] colors;
     [SerializeField] private SkinnedMeshRenderer skinnedMeshRenderer;
 
-    public static PlayerColor PlayerColor = PlayerColor.DarkBlue;
-    
-    
-    public void SetColor()
+
+    private void Awake()
     {
-        skinnedMeshRenderer.material = colors[(int)PlayerColor];
+        GameEvents.OnColorWheelSpin += OnColorWheelSpin;
     }
 
-    private void Update()
+    private void Start()
     {
-        SetColor();
+        SetColor(ColorWheelButton.SkinColorIndex);
+    }
+
+    private void OnDestroy()
+    {
+        GameEvents.OnColorWheelSpin -= OnColorWheelSpin;
+    }
+
+
+    private void OnColorWheelSpin(GameEventResponse response)
+    {
+        SetColor(response.colorWheelIndex);
+    }
+    
+
+    private void SetColor(int index)
+    {
+        skinnedMeshRenderer.sharedMaterial.color = colors[index];
     }
 }

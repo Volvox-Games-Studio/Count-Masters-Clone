@@ -489,26 +489,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
---- !u!1 &235538904 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2133884995346511866, guid: 20c521952eeb0c94a8ca2ef9c8515463,
-    type: 3}
-  m_PrefabInstance: {fileID: 6089945591201053327}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &235538909
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 235538904}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &259035653
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1400,26 +1380,6 @@ Transform:
   m_Father: {fileID: 1530938217}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1230839671 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3820991493612965637, guid: 20c521952eeb0c94a8ca2ef9c8515463,
-    type: 3}
-  m_PrefabInstance: {fileID: 6089945591201053327}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &1230839676
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1230839671}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &1256277640
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2188,26 +2148,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1595392148 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6930313672861016743, guid: 20c521952eeb0c94a8ca2ef9c8515463,
-    type: 3}
-  m_PrefabInstance: {fileID: 6089945591201053327}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &1595392152
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1595392148}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7478423547226392250, guid: 4f209cddfd48c3040804868a82d3d85d, type: 3}
 --- !u!4 &1707900404 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1252487702882501895, guid: 06592d3693dc86e47b726e41eafbd235,
@@ -3297,25 +3237,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2133884995346511866, guid: 20c521952eeb0c94a8ca2ef9c8515463,
-        type: 3}
-      propertyPath: m_TagString
-      value: Obstacle
-      objectReference: {fileID: 0}
     - target: {fileID: 2270020472372656503, guid: 20c521952eeb0c94a8ca2ef9c8515463,
         type: 3}
       propertyPath: m_Name
       value: '1DonerObs '
-      objectReference: {fileID: 0}
-    - target: {fileID: 3820991493612965637, guid: 20c521952eeb0c94a8ca2ef9c8515463,
-        type: 3}
-      propertyPath: m_TagString
-      value: Obstacle
-      objectReference: {fileID: 0}
-    - target: {fileID: 6930313672861016743, guid: 20c521952eeb0c94a8ca2ef9c8515463,
-        type: 3}
-      propertyPath: m_TagString
-      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20c521952eeb0c94a8ca2ef9c8515463, type: 3}
@@ -3535,11 +3460,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6954863296545550358, guid: 3b4740c4850228a43b3dcc800be2a137,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 84.77253
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b4740c4850228a43b3dcc800be2a137, type: 3}

@@ -28,13 +28,4 @@ public class Arrow : MonoBehaviour
         var direction = (target.transform.position - transform.position) + Vector3.up * 2;
         transform.position += direction.normalized * Time.deltaTime * speed;
     }
-
-    private void OnTriggerEnter(Collider other) //TARGETA ÇARPINCA PLAYER LİSTESİNDEN ÇIKART, 2 OBJEYİ DE YOK ET
-    {
-        if (other.TryGetComponent(out PlayerController playerController))
-        {
-            playerController.Kill();
-            Destroy(gameObject);
-        }
-    }
 }

@@ -1,26 +1,10 @@
-﻿using System;
-using DG.Tweening;
+﻿using DG.Tweening;
 using Emre;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody rb;
     private Tween moveTween;
-    
-
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Obstacle"))
-        {
-            Kill();
-        }
-    }
 
 
     public void Kill()

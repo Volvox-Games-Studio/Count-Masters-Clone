@@ -7,7 +7,10 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class PlayerSpawner : MonoBehaviour
-    {
+{
+        private const int MaxSpawnCountPerFrame = 50;
+        
+        
         [SerializeField] private PlayerController playerPrefab;
         [SerializeField] private float distanceFactor;
         [SerializeField] private float radius;
@@ -18,8 +21,6 @@ public class PlayerSpawner : MonoBehaviour
         
         private void Start()
         {
-            oldPlayerCount = PlayerGroupController.GroupCount;
-
             for (int i = 0; i < initialPlayerCount; i++)
             {
                 SpawnNewPlayer();
@@ -28,13 +29,13 @@ public class PlayerSpawner : MonoBehaviour
 
         private void OnEnable()
         {
-            GameEvents.OnDoorDashed += InstantiatePlayers;
+            GameEvents.OnDoorDashed += OnDoorDashed;
             GameEvents.OnPlayerDied += OnPlayerDied;
         }
 
         private void OnDisable()
         {
-            GameEvents.OnDoorDashed -= InstantiatePlayers;
+            GameEvents.OnDoorDashed -= OnDoorDashed;
             GameEvents.OnPlayerDied -= OnPlayerDied;
         }
 
@@ -45,27 +46,39 @@ public class PlayerSpawner : MonoBehaviour
         }
         
         
-        private void InstantiatePlayers(GameEventResponse gameEventResponse)
+        private void OnDoorDashed(GameEventResponse gameEventResponse)
         {
-            if (gameEventResponse.gateOperator == GateOperator.Add)
-            {
-                for (int i = 0; i < gameEventResponse.gateValue; i++)
-                {
-                    SpawnNewPlayer();
-                }
-            }
-            else
-            {
-                for (int i = 0; i < oldPlayerCount * gameEventResponse.gateValue - oldPlayerCount ; i++)
-                {
-                    SpawnNewPlayer();
-                }
-            }
-
-            oldPlayerCount = PlayerGroupController.GroupCount;
-            FormatPlayers();
+            UpdatePlayerCount(gameEventResponse.gateOperator, gameEventResponse.gateValue);
         }
 
+
+        private void UpdatePlayerCount(GateOperator gateOperator, int gateValue)
+        {
+            StartCoroutine(Routine());
+            
+            
+            IEnumerator Routine()
+            {
+                var oldPlayerCount = players.Count;
+                var newPlayerCount = gateOperator switch
+                {
+                    GateOperator.Add => oldPlayerCount + gateValue,
+                    GateOperator.Mult => oldPlayerCount * gateValue
+                };
+            
+                var deltaPlayerCount = newPlayerCount - oldPlayerCount;
+            
+                for (int i = 0; i < deltaPlayerCount; i++)
+                {
+                    SpawnNewPlayer();
+
+                    if (i % MaxSpawnCountPerFrame == 0) yield return null;
+                }
+                
+                FormatPlayers();
+            }
+        }
+        
         private void SpawnNewPlayer()
         {
             var spawnPos = transform.position;

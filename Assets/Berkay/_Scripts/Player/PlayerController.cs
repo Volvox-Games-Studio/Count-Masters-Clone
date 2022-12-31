@@ -18,14 +18,19 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Obstacle"))
         {
-            moveTween?.Kill();
-            PlayerSpawner.players.Remove(this);
-            Destroy(gameObject);
-            GameEvents.RaisePlayerDied(this);
+            Kill();
         }
     }
 
 
+    public void Kill()
+    {
+        moveTween?.Kill();
+        PlayerSpawner.players.Remove(this);
+        Destroy(gameObject);
+        GameEvents.RaisePlayerDied(this);
+    }
+    
     public void DoLocalMove(Vector3 position)
     {
         moveTween?.Kill();

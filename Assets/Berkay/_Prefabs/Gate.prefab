@@ -132,7 +132,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: +45
+  m_text: +10
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 85af64b47fe8de54d883c980d12a9d04, type: 2}
   m_sharedMaterial: {fileID: 4550512804970200221, guid: 85af64b47fe8de54d883c980d12a9d04,
@@ -594,8 +594,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a94dd04863e8dc7479a1827894bad0f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gateOperator: 0
-  value: 31
+  gateOperator: 1
+  value: 20
   doorText: {fileID: 6536430092965593892}
   isEntered: 0
 --- !u!65 &8740487601767893699
@@ -978,8 +978,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a94dd04863e8dc7479a1827894bad0f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gateOperator: 1
-  value: 10
+  gateOperator: 0
+  value: 5
   doorText: {fileID: 5951400432452002881}
   isEntered: 0
 --- !u!65 &7547534439641247382

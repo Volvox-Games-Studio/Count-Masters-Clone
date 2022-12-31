@@ -33,8 +33,7 @@ public class Arrow : MonoBehaviour
     {
         if (other.TryGetComponent(out PlayerController playerController))
         {
-            PlayerSpawner.players.Remove(playerController);
-            Destroy(other.gameObject);
+            playerController.Kill();
             Destroy(gameObject);
         }
     }

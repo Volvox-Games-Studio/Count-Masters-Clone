@@ -24,8 +24,10 @@ namespace Emre
         public static UnityAction<GameEventResponse> OnPlayerGroupSizeChanged;
         public static UnityAction<GameEventResponse> OnPlayerDied;
         public static UnityAction<GameEventResponse> OnPlayerGroupStateChanged;
+        public static UnityAction<GameEventResponse> OnBattleEnd;
 
         public static UnityAction<GameEventResponse> OnGameStarted;
+        public static UnityAction<GameEventResponse> OnGameOver;
 
 
         public static void RaiseLoadedSongToggle(bool isOn)
@@ -150,9 +152,25 @@ namespace Emre
             });
         }
 
+        public static void RaiseBattleEnd(bool isVictory)
+        {
+            OnBattleEnd?.Invoke(new GameEventResponse()
+            {
+                isVictory = isVictory
+            });
+        }
+
         public static void RaiseGameStarted()
         {
             OnGameStarted?.Invoke(new GameEventResponse());
+        }
+
+        public static void RaiseGameOver(GameOverReason reason)
+        {
+            OnGameOver?.Invoke(new GameEventResponse()
+            {
+                gameOverReason = reason
+            });
         }
     }
 
@@ -175,5 +193,13 @@ namespace Emre
         public float playerGroupRadius;
         public PlayerController diedPlayer;
         public PlayerGroupState playerGroupState;
+        public bool isVictory;
+        public GameOverReason gameOverReason;
+    }
+
+    public enum GameOverReason
+    {
+        LosingBattle,
+        NoPlayerLeft
     }
 }

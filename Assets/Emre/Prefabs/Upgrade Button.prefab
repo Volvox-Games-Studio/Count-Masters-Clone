@@ -238,7 +238,7 @@ MonoBehaviour:
   m_text: 9999
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 85af64b47fe8de54d883c980d12a9d04, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 0feb27a78d4b5274a9f298d172e561e4, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: b6ccd456a5a406f4b84f8360d8501f8a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -467,7 +467,7 @@ MonoBehaviour:
     LVL'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 85af64b47fe8de54d883c980d12a9d04, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 0feb27a78d4b5274a9f298d172e561e4, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: b6ccd456a5a406f4b84f8360d8501f8a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -602,7 +602,7 @@ MonoBehaviour:
   m_text: Start Units
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 85af64b47fe8de54d883c980d12a9d04, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 0feb27a78d4b5274a9f298d172e561e4, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: b6ccd456a5a406f4b84f8360d8501f8a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -852,6 +852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5b9512f05852404e8ea7bc92ff15736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dataProvider: {fileID: 0}
   main: {fileID: 6619403577515121889}
   levelField: {fileID: 1821660048}
   costField: {fileID: 1566696064}
@@ -864,8 +865,7 @@ MonoBehaviour:
   inactiveCoinSprite: {fileID: 21300000, guid: 3c8a7ce62f57f014cbb8e3c1191c3232, type: 3}
   upgradeSucceedSound: {fileID: 5456480819407009528}
   upgradeFailedSound: {fileID: 2176779208297454265}
-  costs: 
-  saveKey: 
+  type: 0
   punchCurve:
     serializedVersion: 2
     m_Curve:

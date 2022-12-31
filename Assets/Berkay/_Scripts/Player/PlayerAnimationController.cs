@@ -5,6 +5,9 @@ namespace Berkay._Scripts.Player
 {
     public class PlayerAnimationController : MonoBehaviour
     {
+        private static readonly int IsRun = Animator.StringToHash("isRun");
+        
+        
         [SerializeField] private Animator animator;
 
 
@@ -27,7 +30,7 @@ namespace Berkay._Scripts.Player
 
         private void ControlAnimations(PlayerGroupState groupState)
         {
-            if (groupState == PlayerGroupState.Walking)
+            if (groupState is PlayerGroupState.Walking or PlayerGroupState.Fighting)
             {
                 PlayRun();
             }
@@ -39,12 +42,12 @@ namespace Berkay._Scripts.Player
         
         private void PlayRun()
         {
-            animator.SetBool("isRun", true);
+            animator.SetBool(IsRun, true);
         }
 
         private void PlayIdle()
         {
-            animator.SetBool("isRun", false);
+            animator.SetBool(IsRun, false);
         }
     }
 }

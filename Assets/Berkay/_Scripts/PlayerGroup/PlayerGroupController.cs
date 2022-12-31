@@ -1,33 +1,36 @@
-﻿using Emre;
+﻿using Berkay._Scripts.Enemy;
+using Emre;
 using UnityEngine;
 
 
 public class PlayerGroupController : MonoBehaviour
 {
-    private PlayerGroupState PlayerGroupState
+    public static PlayerGroupState PlayerGroupState
     {
-        get => m_PlayerGroupState;
-        set
+        get => ms_PlayerGroupState;
+        private set
         {
-            m_PlayerGroupState = value;
+            ms_PlayerGroupState = value;
             GameEvents.RaisePlayerGroupStateChanged(value);
         }
     }
 
 
-    private PlayerGroupState m_PlayerGroupState;
+    private static PlayerGroupState ms_PlayerGroupState;
     
 
     private void Awake()
     {
         GameEvents.OnGameStarted += OnGameStarted;
         GameEvents.OnPlayerGroupSizeChanged += OnPlayerGroupSizeChanged;
+        GameEvents.OnBattleEnd += OnBattleEnd;
     }
 
     private void OnDestroy()
     {
         GameEvents.OnGameStarted -= OnGameStarted;
         GameEvents.OnPlayerGroupSizeChanged -= OnPlayerGroupSizeChanged;
+        GameEvents.OnBattleEnd -= OnBattleEnd;
     }
 
 
@@ -37,6 +40,20 @@ public class PlayerGroupController : MonoBehaviour
     }
 
 
+    public void BeginBattle(Vector3 position)
+    {
+        PlayerGroupState = PlayerGroupState.Fighting;
+        
+        var delay = BattleUtils.BattleInvadeInterval;
+
+        foreach (var player in PlayerSpawner.players)
+        {
+            var offset = BattleUtils.GetRandomOffset();
+            player.Move(position + offset, delay);
+            delay += BattleUtils.BattleInvadeInterval;
+        }
+    }
+    
     private void OnGameStarted(GameEventResponse response)
     {
         PlayerGroupState = PlayerGroupState.Walking;
@@ -45,5 +62,13 @@ public class PlayerGroupController : MonoBehaviour
     private void OnPlayerGroupSizeChanged(GameEventResponse response)
     {
         PlayerGroupState = PlayerGroupState;
+    }
+
+    private void OnBattleEnd(GameEventResponse response)
+    {
+        if (response.isVictory)
+        {
+            PlayerGroupState = PlayerGroupState.Walking;
+        }
     }
 }

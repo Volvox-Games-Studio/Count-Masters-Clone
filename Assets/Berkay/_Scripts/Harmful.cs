@@ -1,19 +1,38 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Berkay._Scripts
 {
     public class Harmful : MonoBehaviour
     {
         [SerializeField] private bool selfKill;
+
+
+        [Header("Events")]
+        public UnityEvent onBeginInteract;
+        public UnityEvent onEndInteract;
+
+
+        private bool m_Enabled = true;
         
-        
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out PlayerController playerController))
             {
-                playerController.Kill();
+                if (!m_Enabled) return;
+
+                onBeginInteract?.Invoke();
                 
-                if (selfKill) Destroy(gameObject);
+                playerController.Kill();
+
+                if (selfKill)
+                {
+                    m_Enabled = false;
+                    Destroy(gameObject);
+                }
+
+                onEndInteract?.Invoke();
             }
         }
     }

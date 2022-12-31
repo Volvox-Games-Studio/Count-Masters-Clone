@@ -9,6 +9,7 @@ TagManager:
   - FallDetector
   - Obstacle
   - Enemy
+  - BattleTrigger
   layers:
   - Default
   - TransparentFX

@@ -7,6 +7,7 @@ namespace Emre
     {
         public void OnBeginDrag(PointerEventData eventData)
         {
+            enabled = false;
             GameEvents.RaiseGameStarted();
         }
     }

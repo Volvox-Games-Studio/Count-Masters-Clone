@@ -61,7 +61,7 @@ public class PlayerSpawner : MonoBehaviour
         }
         
 
-        private float Radius => IndexToLocalPosition(Size - 1).magnitude;
+        private static float Radius => GroupUtils.IndexToLocalPosition(Size - 1).magnitude;
         private static int Size => players.Count;
         
 
@@ -70,6 +70,7 @@ public class PlayerSpawner : MonoBehaviour
             GameEvents.OnDoorDashed += OnDoorDashed;
             GameEvents.OnPlayerDied += OnPlayerDied;
             GameEvents.OnStartUnitsUpgraded += OnStartUnitsUpgraded;
+            GameEvents.OnBattleEnd += OnBattleEnd;
         }
 
         private void OnDestroy()
@@ -77,6 +78,7 @@ public class PlayerSpawner : MonoBehaviour
             GameEvents.OnDoorDashed -= OnDoorDashed;
             GameEvents.OnPlayerDied -= OnPlayerDied;
             GameEvents.OnStartUnitsUpgraded -= OnStartUnitsUpgraded;
+            GameEvents.OnBattleEnd -= OnBattleEnd;
         }
         
         private void Update()
@@ -85,6 +87,25 @@ public class PlayerSpawner : MonoBehaviour
         }
 
 
+        public static void Remove(PlayerController player)
+        {
+            players.Remove(player);
+
+            if (Size <= 0)
+            {
+                if (PlayerGroupController.PlayerGroupState == PlayerGroupState.Fighting)
+                {
+                    GameEvents.RaiseBattleEnd(false);
+                }
+
+                else
+                {
+                    GameEvents.RaiseGameOver(GameOverReason.NoPlayerLeft);
+                }
+            }
+        }
+        
+        
         private void OnStartUnitsUpgraded(GameEventResponse response)
         {
             var spawnCount = response.startUnits - Size;
@@ -107,6 +128,17 @@ public class PlayerSpawner : MonoBehaviour
         private void OnDoorDashed(GameEventResponse gameEventResponse)
         {
             UpdatePlayerCount(gameEventResponse.gateOperator, gameEventResponse.gateValue);
+        }
+
+        private void OnBattleEnd(GameEventResponse response)
+        {
+            if (response.isVictory)
+            {
+                FormatPlayers(false);
+                return;
+            }
+            
+            GameEvents.RaiseGameOver(GameOverReason.LosingBattle);
         }
 
 
@@ -165,15 +197,8 @@ public class PlayerSpawner : MonoBehaviour
             for (int i = 0; i < Size; i++)
             {
                 var player = players[i];
-                var localPosition = IndexToLocalPosition(i);
+                var localPosition = GroupUtils.IndexToLocalPosition(i);
                 player.Format(localPosition, afterDied);
             }
         }
-
-        private Vector3 IndexToLocalPosition(int index)
-        {
-            var x = distanceFactor * Mathf.Sqrt(index) * Mathf.Cos(index * radiusFactor);
-            var z = distanceFactor * Mathf.Sqrt(index) * Mathf.Sin(index * radiusFactor);
-            return new Vector3(x, 0f, z);
-        }
-    }
+}

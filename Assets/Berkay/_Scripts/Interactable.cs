@@ -5,6 +5,9 @@ namespace Berkay._Scripts
 {
     public class Interactable : MonoBehaviour
     {
+        [SerializeField] private bool disableAfterInteract;
+        
+        
         public UnityEvent onInteract;
         
         
@@ -12,6 +15,9 @@ namespace Berkay._Scripts
         {
             if (other.TryGetComponent(out PlayerController playerController))
             {
+                if (disableAfterInteract) gameObject.SetActive(false);
+                
+                playerController.OnInteract(this);
                 onInteract?.Invoke();
             }
         }

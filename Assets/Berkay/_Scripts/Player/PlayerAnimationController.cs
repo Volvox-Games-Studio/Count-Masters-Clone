@@ -1,26 +1,33 @@
-﻿using System;
+﻿using Emre;
 using UnityEngine;
 
 namespace Berkay._Scripts.Player
 {
     public class PlayerAnimationController : MonoBehaviour
     {
-        private Animator animator;
+        [SerializeField] private Animator animator;
 
 
-        private void Start()
+        private void Awake()
         {
-            animator = GetComponentInChildren<Animator>();
+            GameEvents.OnPlayerGroupStateChanged += OnPlayerGroupStateChanged;
         }
 
-        private void Update()
+        private void OnDestroy()
         {
-            ControlAnimations();
+            GameEvents.OnPlayerGroupStateChanged -= OnPlayerGroupStateChanged;
         }
 
-        private void ControlAnimations()
+
+        private void OnPlayerGroupStateChanged(GameEventResponse response)
         {
-            if (PlayerGroupController.PlayerGroupState == PlayerGroupState.Walking)
+            ControlAnimations(response.playerGroupState);
+        }
+        
+
+        private void ControlAnimations(PlayerGroupState groupState)
+        {
+            if (groupState == PlayerGroupState.Walking)
             {
                 PlayRun();
             }

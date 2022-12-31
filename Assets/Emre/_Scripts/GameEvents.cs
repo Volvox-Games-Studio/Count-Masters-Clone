@@ -18,9 +18,13 @@ namespace Emre
 
         public static UnityAction<GameEventResponse> OnLevelLoaded;
         public static UnityAction<GameEventResponse> OnDoorDashed;
+        public static UnityAction<GameEventResponse> OnPlayerGroupExpanded;
         public static UnityAction<GameEventResponse> OnPlayerDied;
+        public static UnityAction<GameEventResponse> OnPlayerGroupStateChanged;
 
-        
+        public static UnityAction<GameEventResponse> OnGameStarted;
+
+
         public static void RaiseLoadedSongToggle(bool isOn)
         {
             OnLoadedSoundToggle?.Invoke(new GameEventResponse()
@@ -102,12 +106,33 @@ namespace Emre
             });
         }
 
+        public static void RaisePlayerGroupExpanded(int size)
+        {
+            OnPlayerGroupExpanded?.Invoke(new GameEventResponse()
+            {
+                playerGroupSize = size
+            });
+        }
+        
         public static void RaisePlayerDied(PlayerController player)
         {
             OnPlayerDied?.Invoke(new GameEventResponse()
             {
                 diedPlayer = player
             });
+        }
+
+        public static void RaisePlayerGroupStateChanged(PlayerGroupState state)
+        {
+            OnPlayerGroupStateChanged?.Invoke(new GameEventResponse()
+            {
+                playerGroupState = state
+            });
+        }
+
+        public static void RaiseGameStarted()
+        {
+            OnGameStarted?.Invoke(new GameEventResponse());
         }
     }
 
@@ -124,6 +149,8 @@ namespace Emre
         public int currentLevel;
         public GateOperator gateOperator;
         public int gateValue;
+        public int playerGroupSize;
         public PlayerController diedPlayer;
+        public PlayerGroupState playerGroupState;
     }
 }

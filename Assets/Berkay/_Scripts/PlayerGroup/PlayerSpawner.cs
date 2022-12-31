@@ -98,6 +98,7 @@ public class PlayerSpawner : MonoBehaviour
                     if (i % MaxSpawnCountPerFrame == 0) yield return null;
                 }
                 
+                GameEvents.RaisePlayerGroupExpanded(newPlayerCount);
                 FormatPlayers(false);
             }
         }

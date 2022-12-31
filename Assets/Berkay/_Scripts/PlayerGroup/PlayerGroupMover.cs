@@ -1,6 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Emre;
 using UnityEngine;
 
 public enum PlayerGroupState
@@ -20,6 +18,18 @@ public class PlayerGroupMover : MonoBehaviour
     [SerializeField] private FloatingJoystick joystick;
 
     private float horizontalInput;
+    private bool isMoving;
+
+
+    private void OnEnable()
+    {
+        GameEvents.OnPlayerGroupStateChanged += OnPlayerGroupStateChanged;
+    }
+
+    private void OnDestroy()
+    {
+        GameEvents.OnPlayerGroupStateChanged -= OnPlayerGroupStateChanged;
+    }
 
 
     private void Update()
@@ -27,13 +37,19 @@ public class PlayerGroupMover : MonoBehaviour
         Move();
     }
 
+
+    private void OnPlayerGroupStateChanged(GameEventResponse response)
+    {
+        isMoving = response.playerGroupState == PlayerGroupState.Walking;
+    }
+    
+    
     private void Move()
     {
-        if (PlayerGroupController.PlayerGroupState == PlayerGroupState.Walking)
-        {
-            MoveForward();
-            MoveHorizontal();
-        }
+        if (!isMoving) return;
+        
+        MoveForward();
+        MoveHorizontal();
     }
     
     private void MoveForward()

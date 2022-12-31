@@ -14,9 +14,12 @@ public class PlayerSpawner : MonoBehaviour
         [SerializeField] private PlayerController playerPrefab;
         [SerializeField] private float distanceFactor;
         [SerializeField] private float radius;
+        [SerializeField] private float dieFormatDelay;
         public static List<PlayerController> players = new List<PlayerController>();
         private int oldPlayerCount;
         private int initialPlayerCount = 1;
+        private float lastPlayerDiedTime;
+        private bool formatedAfterPlayerDied = true;
 
         
         private void Start()
@@ -25,6 +28,11 @@ public class PlayerSpawner : MonoBehaviour
             {
                 SpawnNewPlayer();
             }
+        }
+
+        private void Update()
+        {
+            TryFormatAfterPlayerDied();
         }
 
         private void OnEnable()
@@ -42,7 +50,8 @@ public class PlayerSpawner : MonoBehaviour
 
         private void OnPlayerDied(GameEventResponse response)
         {
-            FormatPlayers();
+            lastPlayerDiedTime = Time.time;
+            formatedAfterPlayerDied = false;
         }
         
         
@@ -52,6 +61,20 @@ public class PlayerSpawner : MonoBehaviour
         }
 
 
+        private bool TryFormatAfterPlayerDied()
+        {
+            var timeElapsedAfterLastPlayerDied = Time.time - lastPlayerDiedTime;
+
+            if (!formatedAfterPlayerDied && timeElapsedAfterLastPlayerDied > dieFormatDelay)
+            {
+                FormatPlayers(true);
+                formatedAfterPlayerDied = true;
+                return true;
+            }
+
+            return false;
+        }
+        
         private void UpdatePlayerCount(GateOperator gateOperator, int gateValue)
         {
             StartCoroutine(Routine());
@@ -75,7 +98,7 @@ public class PlayerSpawner : MonoBehaviour
                     if (i % MaxSpawnCountPerFrame == 0) yield return null;
                 }
                 
-                FormatPlayers();
+                FormatPlayers(false);
             }
         }
         
@@ -86,7 +109,7 @@ public class PlayerSpawner : MonoBehaviour
             players.Add(newPlayer);
         }
         
-        private void FormatPlayers()
+        private void FormatPlayers(bool afterDied)
         {
             for (int i = 0; i < players.Count; i++)
             {
@@ -96,7 +119,7 @@ public class PlayerSpawner : MonoBehaviour
                 var position = new Vector3(x, 0f, z);
                 var player = players[i];
 
-                player.DoLocalMove(position);
+                player.Format(position, afterDied);
             }
         }
     }

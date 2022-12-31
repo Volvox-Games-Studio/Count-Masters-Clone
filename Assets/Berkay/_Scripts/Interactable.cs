@@ -1,19 +1,18 @@
 using UnityEngine;
+using UnityEngine.Events;
 
-namespace Berkay._Scripts.Enemy
+namespace Berkay._Scripts
 {
-    public class Harmful : MonoBehaviour
+    public class Interactable : MonoBehaviour
     {
-        [SerializeField] private bool selfKill;
+        public UnityEvent onInteract;
         
         
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out PlayerController playerController))
             {
-                playerController.Kill();
-                
-                if (selfKill) Destroy(gameObject);
+                onInteract?.Invoke();
             }
         }
     }

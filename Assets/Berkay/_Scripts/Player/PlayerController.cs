@@ -4,7 +4,17 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField, Min(0f)] private float formatDuration;
+    [SerializeField, Min(0f)] private float dieFormatDuration;
+
+
     private Tween moveTween;
+
+
+    private void Start()
+    {
+        DOTween.SetTweensCapacity(1000, 50);
+    }
 
 
     public void Kill()
@@ -15,12 +25,15 @@ public class PlayerController : MonoBehaviour
         GameEvents.RaisePlayerDied(this);
     }
     
-    public void DoLocalMove(Vector3 position)
+    public void Format(Vector3 localPosition, bool afterDied)
     {
-        moveTween?.Kill();
-        moveTween = transform.DOLocalMove(position, 0.5f);
+        var duration = afterDied ? dieFormatDuration : formatDuration;
+        var ease = afterDied ? Ease.Linear : Ease.OutBack;
         
+        moveTween?.Kill();
+        moveTween = transform.DOLocalMove(localPosition, duration);
+                
         moveTween
-            .SetEase(Ease.OutBack);
+            .SetEase(ease);
     }
 }

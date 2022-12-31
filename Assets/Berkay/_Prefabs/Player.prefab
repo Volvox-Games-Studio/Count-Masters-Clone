@@ -1034,6 +1034,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102d880026e84193b2fddc8ff7a39183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  formatDuration: 0.5
+  dieFormatDuration: 3
 --- !u!114 &9053426950679509274
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -49,6 +49,8 @@ GameObject:
   - component: {fileID: 1866469414973053302}
   - component: {fileID: 2162494268326557282}
   - component: {fileID: 6255694436943907559}
+  - component: {fileID: 310406850}
+  - component: {fileID: 8207150239873934330}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -129,7 +131,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5819941354684817295}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2
@@ -147,8 +149,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79644c5bfbcd12a42b83b1ba4630ed3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kapak1: {fileID: 7079291503345103372}
-  kapak2: {fileID: 5606663675282211105}
+  k1Anim: {fileID: 2113967489}
+  k2Anim: {fileID: 1201902244}
+--- !u!114 &310406850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5819941354684817295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd41671556e447a8b5c1c1d27804b60b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onInteract:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6255694436943907559}
+        m_TargetAssemblyTypeName: ButtonObstacle, Assembly-CSharp
+        m_MethodName: OnInteract
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 310406850}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!54 &8207150239873934330
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5819941354684817295}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1001 &4688167195245902960
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -258,6 +315,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.020823618, y: 0.020906605, z: 0.02603691}
   m_Center: {x: 0.000026419759, y: 0.010466794, z: 0.000529653}
+--- !u!95 &1201902244
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5606663675282211105}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 13014cbb55fb9f94ca2e87b6bb718f94, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &7842214327360791117
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -609,6 +686,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.020823628, y: 0.020906605, z: 0.026037036}
   m_Center: {x: 0.000026419772, y: 0.010466794, z: 0.0005295908}
+--- !u!95 &2113967489
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7079291503345103372}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 48b8624ab4bb2844facf48f5da931e6c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &7599088462043752630 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3f549a5121e4dd94d9baa56e48f51954,

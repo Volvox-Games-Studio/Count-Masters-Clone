@@ -1318,32 +1318,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.063004285, y: 0.05676809, z: 0.055113573}
   m_Center: {x: -0.055571195, y: 0.00020900102, z: 0.029625997}
---- !u!1 &1201902239 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5606663675282211105, guid: d39b4f3220e177843a63a6ae19cec5ea,
-    type: 3}
-  m_PrefabInstance: {fileID: 7842214328061376772}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1201902244
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1201902239}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 13014cbb55fb9f94ca2e87b6bb718f94, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1206176917
 GameObject:
   m_ObjectHideFlags: 0
@@ -1556,6 +1530,7 @@ MonoBehaviour:
     type: 3}
   distanceFactor: 0.35
   radius: 1
+  dieFormatDelay: 1
 --- !u!1 &1375217428
 GameObject:
   m_ObjectHideFlags: 0
@@ -2661,32 +2636,6 @@ Transform:
   m_Father: {fileID: 1530938217}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2113967484 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7079291503345103372, guid: d39b4f3220e177843a63a6ae19cec5ea,
-    type: 3}
-  m_PrefabInstance: {fileID: 7842214328061376772}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &2113967489
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2113967484}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 48b8624ab4bb2844facf48f5da931e6c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &483696513140780163
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3470,11 +3419,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976059701}
     m_Modifications:
-    - target: {fileID: 2162494268326557282, guid: d39b4f3220e177843a63a6ae19cec5ea,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3491681761385015291, guid: d39b4f3220e177843a63a6ae19cec5ea,
         type: 3}
       propertyPath: m_Name
@@ -3534,21 +3478,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6255694436943907559, guid: d39b4f3220e177843a63a6ae19cec5ea,
-        type: 3}
-      propertyPath: k1Anim
-      value: 
-      objectReference: {fileID: 2113967489}
-    - target: {fileID: 6255694436943907559, guid: d39b4f3220e177843a63a6ae19cec5ea,
-        type: 3}
-      propertyPath: k2Anim
-      value: 
-      objectReference: {fileID: 1201902244}
-    - target: {fileID: 6255694436943907559, guid: d39b4f3220e177843a63a6ae19cec5ea,
-        type: 3}
-      propertyPath: closingTime
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d39b4f3220e177843a63a6ae19cec5ea, type: 3}

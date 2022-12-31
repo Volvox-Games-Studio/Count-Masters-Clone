@@ -19,15 +19,14 @@ public class ButtonObstacle : MonoBehaviour
 
     private void GoDown()
     {
-        transform.Translate(Vector3.down * 2);
+        transform.DOMove(transform.position + Vector3.down * 0.5f, 0.25f)
+            .SetEase(Ease.OutSine);
     }
 
-    private void OnTriggerEnter(Collider other)
+
+    public void OnInteract()
     {
-        if (other.CompareTag("Player"))
-        {
-            CloseKapaks();
-            GoDown();
-        }
+        CloseKapaks();
+        GoDown();
     }
 }

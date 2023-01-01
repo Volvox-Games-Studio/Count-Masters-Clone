@@ -1,6 +1,5 @@
 # Count-Masters-Clone by VOLVOX GAMES
 
--SON DAKİKALARDA ORTAYA ÇIKTIĞI İÇİN ÇÖZMEYE VAKİT BULAMADIĞIMIZ UI BUG'INI YAŞAMAMAK İÇİN UNİTY ÜZERİNDEN OYNAMANIZI TAVSİYE EDERİZ
 -
 -Level uzunlukları 3 bölümde tasarlanmış bütün mekanikleri gösterebilmek adına normalden uzun tutulmuştur.
 -

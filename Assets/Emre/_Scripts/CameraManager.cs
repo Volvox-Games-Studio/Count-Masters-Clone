@@ -10,7 +10,7 @@ namespace Emre
         [SerializeField] private CinemachineVirtualCamera ladderEntering;
         [SerializeField] private CinemachineVirtualCamera ladderCamera;
         [SerializeField] private Transform ladderFocus;
-
+        
 
         public static Transform LadderFocus => Instance.ladderFocus;
         
@@ -23,12 +23,12 @@ namespace Emre
 
         private void Awake()
         {
-            GameEvents.OnReachedFinishLine += OnReachedFinishLine;
+            GameEvents.OnStartLevelEnding += OnStartLevelEnding;
         }
 
         private void OnDestroy()
         {
-            GameEvents.OnReachedFinishLine -= OnReachedFinishLine;
+            GameEvents.OnStartLevelEnding -= OnStartLevelEnding;
         }
 
 
@@ -37,8 +37,32 @@ namespace Emre
             LadderFocus.position = position;
         }
         
+        
 
-        private void OnReachedFinishLine(GameEventResponse response)
+        private void OnStartLevelEnding(GameEventResponse response)
+        {
+            if (response.levelEndingType == LevelEndingType.Cannon)
+            {
+                CannonFinish();
+            }
+            else if(response.levelEndingType == LevelEndingType.Ladders)
+            {
+                LadderFinish();
+            }
+        }
+
+        private void CannonFinish()
+        {
+            var cam = GameObject.FindGameObjectWithTag("CannonCamera")
+                .GetComponent<CinemachineVirtualCamera>();
+
+            cam.Priority = 10;
+            mainFollow.Priority = 0;
+            ladderEntering.Priority = 0;
+            ladderCamera.Priority = 0;
+        }
+        
+        private void LadderFinish()
         {
             StartCoroutine(Routine());
             
@@ -51,13 +75,11 @@ namespace Emre
                 
                 
                 yield return new WaitForSeconds(3f);
+
+                mainFollow.Priority = 0;
+                ladderEntering.Priority = 0;
+                ladderCamera.Priority = 10;
                 
-                if (response.levelEndingType == LevelEndingType.Ladders)
-                {
-                    mainFollow.Priority = 0;
-                    ladderEntering.Priority = 0;
-                    ladderCamera.Priority = 10;
-                }
             }
         }
     }

@@ -70,10 +70,10 @@ public class PlayerController : MonoBehaviour
         Vibrator.Vibrate();
     }
     
-    public void Kill()
+    public void Kill(bool ignoreLevelFail = false)
     {
         moveTween?.Kill();
-        PlayerSpawner.Remove(this);
+        PlayerSpawner.Remove(this, ignoreLevelFail);
         Destroy(gameObject);
         GameEvents.RaisePlayerDied(this);
         AudioSource.PlayClipAtPoint(dieSound, Vector3.zero);

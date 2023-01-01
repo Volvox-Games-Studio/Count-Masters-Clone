@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Emre
@@ -237,6 +238,7 @@ namespace Emre
 
     public enum LevelEndingType
     {
-        Ladders
+        Ladders,
+        Cannon
     }
 }

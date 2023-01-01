@@ -13,6 +13,7 @@ TagManager:
   - FinishTrigger
   - LadderBlock
   - ChestEnter
+  - CannonCamera
   layers:
   - Default
   - TransparentFX

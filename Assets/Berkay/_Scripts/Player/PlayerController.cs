@@ -9,8 +9,9 @@ public class PlayerController : MonoBehaviour
     private const string FinishTrigger = "FinishTrigger";
     private const string LadderBlock = "LadderBlock";
     private const string ChestEnter = "ChestEnter";
-    
-    
+
+
+    [SerializeField] private AudioClip dieSound;
     [SerializeField, Min(0f)] private float formatDuration;
     [SerializeField, Min(0f)] private float dieFormatDuration;
     [SerializeField] private float moveSpeed;
@@ -75,6 +76,7 @@ public class PlayerController : MonoBehaviour
         PlayerSpawner.Remove(this);
         Destroy(gameObject);
         GameEvents.RaisePlayerDied(this);
+        AudioSource.PlayClipAtPoint(dieSound, Vector3.zero);
         Vibrator.Vibrate();
     }
     

@@ -42,8 +42,14 @@ public class PlayerController : MonoBehaviour
         
         else if (interactable.CompareTag(LadderBlock))
         {
+            var playerLeft = transform.parent.childCount - 1;
             transform.parent = null;
             CameraManager.SetLadderFocus(interactable.transform.position);
+
+            if (playerLeft <= 0)
+            {
+                GameEvents.RaiseLevelComplete(LevelCompleteType.ChestNotOpen);
+            }
         }
         
         else if (interactable.CompareTag(ChestEnter))

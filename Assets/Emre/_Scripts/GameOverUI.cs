@@ -26,7 +26,7 @@ namespace Emre
         
         public void OnClickedTryAgain()
         {
-            Debug.Log("try again");
+            LevelManager.RestartLevel();
         }
     }
 }

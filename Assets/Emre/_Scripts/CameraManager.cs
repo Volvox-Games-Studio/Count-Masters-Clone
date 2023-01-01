@@ -15,7 +15,7 @@ namespace Emre
         public static Transform LadderFocus => Instance.ladderFocus;
         
 
-        private static CameraManager Instance => ms_Instance ??= FindObjectOfType<CameraManager>();
+        private static CameraManager Instance => ms_Instance ? ms_Instance : FindObjectOfType<CameraManager>();
         
         
         private static CameraManager ms_Instance;

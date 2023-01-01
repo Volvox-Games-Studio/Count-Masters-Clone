@@ -24,7 +24,7 @@ namespace Emre
         public UnityEvent<int> onGemAmountChanged;
 
 
-        private void OnEnable()
+        private void Awake()
         {
             onCoinAmountLoaded?.Invoke(Balance.CoinAmount);
             GameEvents.OnCoinAmountChanged += OnCoinAmountChanged;

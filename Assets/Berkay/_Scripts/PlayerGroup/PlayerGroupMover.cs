@@ -69,6 +69,8 @@ public class PlayerGroupMover : MonoBehaviour
             transform.DOMoveX(0f, 0.25f)
                 .SetEase(Ease.OutSine);
         }
+        
+        walkSound.Stop();
     }
 
 

@@ -51,6 +51,7 @@ public class CannonLevelEnd : MonoBehaviour
 
     private IEnumerator StartShooting()
     {
+        yield return new WaitForSeconds(3f);
         while (playerBullet > 0)
         {
             yield return new WaitForSeconds(fireRate);
@@ -67,6 +68,7 @@ public class CannonLevelEnd : MonoBehaviour
 
             playerBullet--;
         }
+        GameEvents.RaiseLevelComplete(LevelCompleteType.BulletsConsumed);
     }
 
     private void MoveAim()

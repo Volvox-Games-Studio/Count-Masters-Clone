@@ -233,7 +233,8 @@ namespace Emre
     public enum LevelCompleteType
     {
         ChestOpen,
-        ChestNotOpen
+        ChestNotOpen,
+        BulletsConsumed
     }
 
     public enum LevelEndingType

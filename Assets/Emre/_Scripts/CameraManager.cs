@@ -9,6 +9,7 @@ namespace Emre
         [SerializeField] private CinemachineVirtualCamera mainFollow;
         [SerializeField] private CinemachineVirtualCamera ladderEntering;
         [SerializeField] private CinemachineVirtualCamera ladderCamera;
+        [SerializeField] private CinemachineVirtualCamera buildCamera;
         [SerializeField] private Transform ladderFocus;
         
 
@@ -24,11 +25,13 @@ namespace Emre
         private void Awake()
         {
             GameEvents.OnStartLevelEnding += OnStartLevelEnding;
+            GameEvents.OnBuildToggle += OnBuildToggle;
         }
 
         private void OnDestroy()
         {
             GameEvents.OnStartLevelEnding -= OnStartLevelEnding;
+            GameEvents.OnBuildToggle -= OnBuildToggle;
         }
 
 
@@ -36,9 +39,22 @@ namespace Emre
         {
             LadderFocus.position = position;
         }
-        
-        
 
+
+
+        private void OnBuildToggle(GameEventResponse response)
+        {
+            if (response.openBuild)
+            {
+                mainFollow.Priority = 0;
+                buildCamera.Priority = 10;
+                return;
+            }
+            
+            mainFollow.Priority = 10;
+            buildCamera.Priority = 0;
+        }
+        
         private void OnStartLevelEnding(GameEventResponse response)
         {
             if (response.levelEndingType == LevelEndingType.Cannon)

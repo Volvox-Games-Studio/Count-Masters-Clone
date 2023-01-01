@@ -33,6 +33,8 @@ namespace Emre
         public static UnityAction<GameEventResponse> OnReachedFinishLine;
         public static UnityAction<GameEventResponse> OnStartLevelEnding;
 
+        public static UnityAction<GameEventResponse> OnBuildToggle;
+
 
         public static void RaiseLoadedSongToggle(bool isOn)
         {
@@ -197,6 +199,14 @@ namespace Emre
                 levelEndingType = type
             });
         }
+
+        public static void RaiseBuildToggle(bool open)
+        {
+            OnBuildToggle?.Invoke(new GameEventResponse()
+            {
+                openBuild = open
+            });
+        }
     }
 
 
@@ -222,6 +232,7 @@ namespace Emre
         public GameOverReason gameOverReason;
         public LevelCompleteType levelCompleteType;
         public LevelEndingType levelEndingType;
+        public bool openBuild;
     }
 
     public enum GameOverReason

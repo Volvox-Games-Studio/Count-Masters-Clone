@@ -11,8 +11,6 @@ public class PlayerSpawner : MonoBehaviour
         
         [SerializeField] private AudioSource groupDieSound;
         [SerializeField] private PlayerController playerPrefab;
-        [SerializeField] private float distanceFactor;
-        [SerializeField] private float radiusFactor;
         [SerializeField] private float dieFormatDelay;
         public static List<PlayerController> players = new List<PlayerController>();
         private float lastPlayerDiedTime;
@@ -23,12 +21,12 @@ public class PlayerSpawner : MonoBehaviour
         {
             get
             {
-                if (Size <= 0) return -XMax;
-                
-                var record = players[0].LocalPosition.x;
+                var record = float.PositiveInfinity;
 
-                for (int i = 1; i < Size; i++)
+                for (var i = 0; i < Size; i++)
                 {
+                    if (players[i].IsFallen) continue;
+                    
                     var x = players[i].LocalPosition.x;
                     
                     if (x > record) continue;
@@ -44,12 +42,12 @@ public class PlayerSpawner : MonoBehaviour
         {
             get
             {
-                if (Size <= 0) return XMax;
-                
-                var record = players[0].LocalPosition.x;
+                var record = -float.PositiveInfinity;
 
-                for (int i = 1; i < Size; i++)
+                for (var i = 0; i < Size; i++)
                 {
+                    if (players[i].IsFallen) continue;
+                    
                     var x = players[i].LocalPosition.x;
                     
                     if (x < record) continue;

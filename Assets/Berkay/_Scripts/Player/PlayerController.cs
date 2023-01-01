@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private const string FinishTrigger = "FinishTrigger";
     private const string LadderBlock = "LadderBlock";
     private const string ChestEnter = "ChestEnter";
+    private const string Dropper = "Dropper";
 
 
     [SerializeField] private AudioClip dieSound;
@@ -18,6 +19,9 @@ public class PlayerController : MonoBehaviour
 
 
     public Vector3 LocalPosition => transform.localPosition;
+    
+    
+    public bool IsFallen { get; private set; }
     
 
     private Tween moveTween;
@@ -63,6 +67,27 @@ public class PlayerController : MonoBehaviour
             {
                 player.FormatChest(position);
             }
+        }
+        
+        else if (interactable.CompareTag(Dropper))
+        {
+            moveTween?.Kill();
+            PlayerSpawner.Remove(this);
+            GameEvents.RaisePlayerDied(this);
+            AudioSource.PlayClipAtPoint(dieSound, Vector3.zero);
+
+            IsFallen = true;
+            
+            moveTween?.Kill();
+            
+            transform.parent = null;
+            moveTween = transform.DOMoveY(-10, 5)
+                .SetSpeedBased()
+                .SetEase(Ease.Linear)
+                .OnComplete(() =>
+                {
+                    Destroy(gameObject);
+                });
         }
         
         Vibrator.Vibrate();

@@ -8,7 +8,6 @@ public class CannonLevelEnd : MonoBehaviour
 {
     [SerializeField] private Transform cannonTransform;
     [SerializeField] private GameObject ragdollPlayerPrefab;
-
     private int playerBullet;
     
     public void GetPlayersInCannon()

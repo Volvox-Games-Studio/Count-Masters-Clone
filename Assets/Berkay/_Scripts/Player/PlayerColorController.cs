@@ -3,9 +3,12 @@ using UnityEngine;
 
 public class PlayerColorController : MonoBehaviour
 {
-    [SerializeField] private Color[] colors;
+    [SerializeField] private ColorContainer colors;
     [SerializeField] private SkinnedMeshRenderer skinnedMeshRenderer;
 
+    
+    
+    
 
     private void Awake()
     {

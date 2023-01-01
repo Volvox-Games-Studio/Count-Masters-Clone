@@ -31,6 +31,8 @@ public class PlayerColorController : MonoBehaviour
 
     private void SetColor(int index)
     {
-        skinnedMeshRenderer.sharedMaterial.color = colors[index];
+        var color = colors[index];
+        skinnedMeshRenderer.sharedMaterial.color = color;
+        GetComponentInParent<PlayerGroupController>().SetCounterColor(color);
     }
 }

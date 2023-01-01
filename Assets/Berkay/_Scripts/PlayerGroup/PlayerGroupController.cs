@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class PlayerGroupController : MonoBehaviour
 {
+    [SerializeField] private WorldSpaceCounter counter;
+    
+    
     public static PlayerGroupState PlayerGroupState
     {
         get => ms_PlayerGroupState;
@@ -25,6 +28,8 @@ public class PlayerGroupController : MonoBehaviour
         GameEvents.OnPlayerGroupSizeChanged += OnPlayerGroupSizeChanged;
         GameEvents.OnBattleEnd += OnBattleEnd;
         GameEvents.OnLevelComplete += OnLevelComplete;
+        GameEvents.OnReachedFinishLine += OnReachedFinishLine;
+        GameEvents.OnGameOver += OnGameOver;
     }
 
     private void OnDestroy()
@@ -32,6 +37,8 @@ public class PlayerGroupController : MonoBehaviour
         GameEvents.OnGameStarted -= OnGameStarted;
         GameEvents.OnPlayerGroupSizeChanged -= OnPlayerGroupSizeChanged;
         GameEvents.OnBattleEnd -= OnBattleEnd;
+        GameEvents.OnReachedFinishLine -= OnReachedFinishLine;
+        GameEvents.OnGameOver -= OnGameOver;
     }
 
 
@@ -54,15 +61,33 @@ public class PlayerGroupController : MonoBehaviour
             delay += BattleUtils.BattleInvadeInterval;
         }
     }
+
+    public void SetCounterColor(Color color)
+    {
+        counter.SetColor(color);
+    }
+
+
+    private void OnGameOver(GameEventResponse response)
+    {
+        counter.Hide();
+    }
+    
+    private void OnReachedFinishLine(GameEventResponse response)
+    {
+        counter.Hide();
+    }
     
     private void OnGameStarted(GameEventResponse response)
     {
         PlayerGroupState = PlayerGroupState.Walking;
+        counter.Show();
     }
 
     private void OnPlayerGroupSizeChanged(GameEventResponse response)
     {
         PlayerGroupState = PlayerGroupState;
+        counter.SetCount(response.playerGroupSize);
     }
 
     private void OnBattleEnd(GameEventResponse response)

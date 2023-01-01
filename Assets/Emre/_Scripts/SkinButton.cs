@@ -77,6 +77,7 @@ namespace Emre
         {
             State = SkinButtonState.Selected;
             DoPunch();
+            Vibrator.Vibrate();
         }
 
         public void Deselect()
@@ -91,11 +92,13 @@ namespace Emre
             {
                 DoShake();
                 lockedSound.Play();
+                Vibrator.Vibrate(100);
                 return false;
             }
 
             State = SkinButtonState.Selected;
             DoPunch();
+            Vibrator.Vibrate();
             return true;
         }
 

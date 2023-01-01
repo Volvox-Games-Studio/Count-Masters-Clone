@@ -58,6 +58,10 @@ namespace Emre
         public void OnVibrationToggle(bool isOn)
         {
             IsVibrationOn = isOn;
+            
+            if (!isOn) return;
+            
+            Vibrator.Vibrate(100);
         }
     }
 }

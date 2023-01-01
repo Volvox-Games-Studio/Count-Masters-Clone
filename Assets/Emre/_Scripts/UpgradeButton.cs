@@ -141,6 +141,7 @@ namespace Emre
                 });
             
             upgradeFailedSound.Play();
+            Vibrator.Vibrate(100);
         }
 
         private void OnUpgradeSucceed()
@@ -156,6 +157,7 @@ namespace Emre
                 .SetEase(punchCurve);
             
             upgradeSucceedSound.Play();
+            Vibrator.Vibrate();
         }
         
         private void RaiseChange()

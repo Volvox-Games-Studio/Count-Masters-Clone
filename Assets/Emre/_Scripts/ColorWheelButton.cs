@@ -108,6 +108,7 @@ namespace Emre
 
                     ferrisWheelSound.Stop();
                     colorChangeSound.Play();
+                    Vibrator.Vibrate();
                 });
         }
     }

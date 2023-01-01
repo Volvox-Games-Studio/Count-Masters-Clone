@@ -65,6 +65,8 @@ public class PlayerController : MonoBehaviour
             moveTween
                 .SetEase(Ease.OutSine);
         }
+        
+        Vibrator.Vibrate();
     }
     
     public void Kill()
@@ -73,6 +75,7 @@ public class PlayerController : MonoBehaviour
         PlayerSpawner.Remove(this);
         Destroy(gameObject);
         GameEvents.RaisePlayerDied(this);
+        Vibrator.Vibrate();
     }
     
     public void Format(Vector3 localPosition, bool afterDied)

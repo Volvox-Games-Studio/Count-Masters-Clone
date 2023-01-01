@@ -103,6 +103,8 @@ public class PlayerSpawner : MonoBehaviour
                     GameEvents.RaiseGameOver(GameOverReason.NoPlayerLeft);
                 }
             }
+            
+            GameEvents.RaisePlayerGroupSizeChanged(Size, Radius);
         }
         
         

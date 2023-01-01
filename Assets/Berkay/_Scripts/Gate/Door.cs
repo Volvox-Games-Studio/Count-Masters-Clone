@@ -56,6 +56,7 @@ public class Door : MonoBehaviour
         {
             isEntered = true;
             GameEvents.RaiseDoorDashed(gateOperator, value);
+            Vibrator.Vibrate();
         }
     }
     

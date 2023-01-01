@@ -16,7 +16,7 @@ public class PlayerSpawner : MonoBehaviour
         public static List<PlayerController> players = new List<PlayerController>();
         private float lastPlayerDiedTime;
         private bool formatedAfterPlayerDied = true;
-
+        private bool isCannonLevelEnd;
 
         public static float LeftBorder
         {
@@ -87,11 +87,11 @@ public class PlayerSpawner : MonoBehaviour
         }
 
 
-        public static void Remove(PlayerController player)
+        public static void Remove(PlayerController player, bool ignoreLevelFail = false)
         {
             players.Remove(player);
 
-            if (Size <= 0)
+            if (Size <= 0 && !ignoreLevelFail)
             {
                 if (PlayerGroupController.PlayerGroupState == PlayerGroupState.Fighting)
                 {
@@ -107,7 +107,7 @@ public class PlayerSpawner : MonoBehaviour
             GameEvents.RaisePlayerGroupSizeChanged(Size, Radius);
         }
         
-        
+    
         private void OnStartUnitsUpgraded(GameEventResponse response)
         {
             var spawnCount = response.startUnits - Size;

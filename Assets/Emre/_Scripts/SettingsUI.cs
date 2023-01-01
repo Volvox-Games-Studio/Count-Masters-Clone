@@ -34,6 +34,12 @@ namespace Emre
         }
 
 
+        private AudioSource[] Audios => m_Audios ??= FindObjectsOfType<AudioSource>(true);
+        
+        
+        private AudioSource[] m_Audios;
+        
+
         private void Start()
         {
             GameEvents.RaiseLoadedSongToggle(IsSoundOn);
@@ -53,6 +59,12 @@ namespace Emre
         public void OnSoundToggle(bool isOn)
         {
             IsSoundOn = isOn;
+            var volume = isOn ? 1f : 0f;
+
+            foreach (var audio in Audios)
+            {
+                audio.volume = volume;
+            }
         }
 
         public void OnVibrationToggle(bool isOn)

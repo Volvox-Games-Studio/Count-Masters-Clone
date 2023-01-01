@@ -1190,7 +1190,7 @@ MonoBehaviour:
   particles: {fileID: 9053426950679509274}
   dieSound: {fileID: 8300000, guid: 7d095e2f4f3fe504dacdbe95d1dcd82c, type: 3}
   formatDuration: 0.5
-  dieFormatDuration: 3
+  dieFormatDuration: 1.5
   moveSpeed: 10
 --- !u!114 &9053426950679509274
 MonoBehaviour:

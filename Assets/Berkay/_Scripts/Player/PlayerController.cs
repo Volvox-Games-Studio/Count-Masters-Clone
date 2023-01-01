@@ -58,13 +58,11 @@ public class PlayerController : MonoBehaviour
             CameraManager.LadderFocus.parent = transform.parent;
             var position = interactable.transform.position;
             CameraManager.SetLadderFocus(position);
-            var groupOffset = GroupUtils.IndexToLocalPosition(PlayerSpawner.players.IndexOf(this));
-            var localPosition = transform.parent.InverseTransformPoint(position + groupOffset);
-            
-            moveTween?.Kill();
-            moveTween = transform.DOLocalMove(localPosition, formatDuration);
-            moveTween
-                .SetEase(Ease.OutSine);
+
+            foreach (var player in PlayerSpawner.players)
+            {
+                player.FormatChest(position);
+            }
         }
         
         Vibrator.Vibrate();
@@ -90,6 +88,21 @@ public class PlayerController : MonoBehaviour
                 
         moveTween
             .SetEase(ease);
+    }
+
+    private void FormatChest(Vector3 position)
+    {
+        var parent = transform.parent;
+        
+        if (!parent) return;
+        
+        var groupOffset = GroupUtils.IndexToLocalPosition(PlayerSpawner.players.IndexOf(this));
+        var localPosition = parent.InverseTransformPoint(position + groupOffset);
+            
+        moveTween?.Kill();
+        moveTween = transform.DOLocalMove(localPosition, formatDuration);
+        moveTween
+            .SetEase(Ease.OutSine);
     }
 
     public void Move(Vector3 position, float delay = 0f)

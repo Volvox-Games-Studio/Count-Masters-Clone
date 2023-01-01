@@ -6,8 +6,9 @@ namespace Emre
     public class LadderBlock : MonoBehaviour
     {
         private const string MultiplierKey = "Multiplier";
-        
-        
+
+
+        [SerializeField] private AudioSource stepSound;
         [SerializeField] private TMP_Text multiplierField;
         [SerializeField] private Transform cube;
         [SerializeField] private new Renderer renderer;
@@ -49,9 +50,15 @@ namespace Emre
             renderer.material.color = color;
         }
 
+        public void SetStepSound(AudioClip clip)
+        {
+            stepSound.clip = clip;
+        }
+
         public void Touch()
         {
             Multiplier = m_Multiplier;
+            stepSound.Play();
         }
     }
 }

@@ -4,9 +4,11 @@ namespace Emre
 {
     public class LadderLevelEnding : MonoBehaviour
     {
+        [SerializeField] private AudioSource stackSound;
         [SerializeField] private LadderBlock prefab;
         [SerializeField] private ChestRoad chestRoadPrefab;
         [SerializeField] private Color[] colors;
+        [SerializeField] private AudioClip[] stepSounds;
         [SerializeField] private int stepCount;
         [SerializeField] private float startWidth;
         [SerializeField] private float endWidth;
@@ -39,6 +41,7 @@ namespace Emre
                 newLadderBlock.SetMultiplier(multiplier);
                 newLadderBlock.SetWidth(width);
                 newLadderBlock.SetColor(color);
+                newLadderBlock.SetStepSound(stepSounds[i]);
             }
 
             var chestRoad = Instantiate(chestRoadPrefab, transform);
@@ -54,6 +57,7 @@ namespace Emre
         private void OnReachedFinishLine(GameEventResponse response)
         {
             GameEvents.RaiseStartLevelEnding(LevelEndingType.Ladders);
+            stackSound.Play();
         }
     }
 }

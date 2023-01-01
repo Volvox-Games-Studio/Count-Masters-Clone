@@ -6,6 +6,7 @@ namespace Emre
 {
     public class LevelComplete : MonoBehaviour
     {
+        [SerializeField] private AudioSource winSound;
         [SerializeField] private GameObject main;
         [SerializeField] private TMP_Text title;
         [SerializeField] private TMP_Text earnedCoinField;
@@ -38,6 +39,8 @@ namespace Emre
 
                 earnedCoinField.text = $"+{earnedCoin}";
                 earnedGemField.text = $"+{earnedGem}";
+                
+                winSound.Play();
                 
                 yield return new WaitForSeconds(2f);
                 

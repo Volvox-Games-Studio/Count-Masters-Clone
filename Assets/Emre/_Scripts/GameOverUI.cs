@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Emre
@@ -5,6 +6,7 @@ namespace Emre
     public class GameOverUI : MonoBehaviour
     {
         [SerializeField] private GameObject gameOverPanel;
+        [SerializeField] private AudioSource loseSound;
 
 
         private void Awake()
@@ -20,7 +22,16 @@ namespace Emre
 
         private void OnGameOver(GameEventResponse response)
         {
-            gameOverPanel.SetActive(true);
+            StartCoroutine(Routine());
+            
+            
+            IEnumerator Routine()
+            {
+                yield return new WaitForSeconds(1.5f);
+                
+                gameOverPanel.SetActive(true);
+                loseSound.Play();
+            }
         }
         
         

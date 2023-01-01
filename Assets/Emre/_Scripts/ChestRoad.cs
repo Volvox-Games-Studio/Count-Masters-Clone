@@ -5,6 +5,7 @@ namespace Emre
 {
     public class ChestRoad : MonoBehaviour
     {
+        [SerializeField] private AudioSource openChestSound;
         [SerializeField] private Transform chestLid;
         [SerializeField] private GameObject chestParticles;
 
@@ -19,6 +20,7 @@ namespace Emre
                 });
             
             GameEvents.RaiseLevelComplete(LevelCompleteType.ChestOpen);
+            openChestSound.Play();
         }
     }
 }

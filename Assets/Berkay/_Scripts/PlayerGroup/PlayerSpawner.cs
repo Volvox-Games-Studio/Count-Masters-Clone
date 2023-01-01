@@ -9,6 +9,7 @@ public class PlayerSpawner : MonoBehaviour
         private const float XMax = 7.5f;
         
         
+        [SerializeField] private AudioSource groupDieSound;
         [SerializeField] private PlayerController playerPrefab;
         [SerializeField] private float distanceFactor;
         [SerializeField] private float radiusFactor;
@@ -102,6 +103,8 @@ public class PlayerSpawner : MonoBehaviour
                 {
                     GameEvents.RaiseGameOver(GameOverReason.NoPlayerLeft);
                 }
+                
+                FindObjectOfType<PlayerSpawner>().groupDieSound.Play();
             }
             
             GameEvents.RaisePlayerGroupSizeChanged(Size, Radius);

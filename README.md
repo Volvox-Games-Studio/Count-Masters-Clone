@@ -21,6 +21,7 @@
 
 ## SOUND:
 - Ömer Faruk Özer
+- Emre Berat Kıran
 
 ## LEVEL DESIGN:
 - Berkay Dindar

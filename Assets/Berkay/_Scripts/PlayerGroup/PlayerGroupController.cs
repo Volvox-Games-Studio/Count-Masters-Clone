@@ -71,6 +71,7 @@ public class PlayerGroupController : MonoBehaviour
     private void OnGameOver(GameEventResponse response)
     {
         counter.Hide();
+        PlayerGroupState = PlayerGroupState.Waiting;
     }
     
     private void OnReachedFinishLine(GameEventResponse response)

@@ -17,6 +17,7 @@ public class PlayerGroupMover : MonoBehaviour
     
     [Header("References")]
     [SerializeField] private FloatingJoystick joystick;
+    [SerializeField] private AudioSource walkSound;
 
     private float horizontalInput;
     private bool isMoving;
@@ -45,6 +46,19 @@ public class PlayerGroupMover : MonoBehaviour
     private void OnPlayerGroupStateChanged(GameEventResponse response)
     {
         isMoving = response.playerGroupState == PlayerGroupState.Walking;
+
+        if (isMoving)
+        {
+            if (!walkSound.isPlaying)
+            {
+                walkSound.Play();
+            }
+        }
+
+        else
+        {
+            walkSound.Stop();
+        }
     }
 
     private void OnStartLevelEnding(GameEventResponse response)

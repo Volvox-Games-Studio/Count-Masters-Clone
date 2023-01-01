@@ -1,5 +1,8 @@
 # Count-Masters-Clone by VOLVOX GAMES
 
+[releases]: https://github.com/Volvox-Games-Studio/Count-Masters-Clone/releases
+
+- İndir [Apk Build][releases] from **releases**
 -
 -Level uzunlukları 3 bölümde tasarlanmış bütün mekanikleri gösterebilmek adına normalden uzun tutulmuştur.
 -

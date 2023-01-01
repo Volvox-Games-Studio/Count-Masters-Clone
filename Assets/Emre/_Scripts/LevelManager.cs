@@ -28,8 +28,8 @@ namespace Emre
             private set => PlayerPrefs.SetInt(LevelCycleKey, value);
         }
 
-        public static int EarnedCoin => (int) (AbsLevel * CoinPerLevel * LadderBlock.Multiplier);
-        public static int EarnedGem => (int) (AbsLevel * GemPerLevel * LadderBlock.Multiplier);
+        public static int EarnedCoin => (int) (AbsLevel * CoinPerLevel * LadderBlock.Multiplier * Instance.m_IncomeMultiplier);
+        public static int EarnedGem => (int) (AbsLevel * GemPerLevel * LadderBlock.Multiplier * Instance.m_IncomeMultiplier);
         
         
         private static LevelManager Instance => ms_Instance ? ms_Instance : FindObjectOfType<LevelManager>();
@@ -40,11 +40,30 @@ namespace Emre
         private static LevelManager ms_Instance;
 
 
+        private float m_IncomeMultiplier;
+
+
+        private void Awake()
+        {
+            GameEvents.OnIncomeUpgraded += OnIncomeUpgraded;
+        }
+
         private void Start()
         {
             SpawnLevel();
         }
 
+        private void OnDestroy()
+        {
+            GameEvents.OnIncomeUpgraded -= OnIncomeUpgraded;
+        }
+
+
+        private void OnIncomeUpgraded(GameEventResponse response)
+        {
+            m_IncomeMultiplier = response.incomeMultiplier;
+        }
+        
 
         private static void SpawnLevel()
         {

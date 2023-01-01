@@ -8,6 +8,8 @@ namespace Emre
     {
         [SerializeField] private GameObject main;
         [SerializeField] private TMP_Text title;
+        [SerializeField] private TMP_Text earnedCoinField;
+        [SerializeField] private TMP_Text earnedGemField;
 
 
         private void Awake()
@@ -28,8 +30,14 @@ namespace Emre
             
             IEnumerator Routine()
             {
-                Balance.AddCoin(LevelManager.EarnedCoin);
-                Balance.AddGem(LevelManager.EarnedGem);
+                var earnedCoin = LevelManager.EarnedCoin;
+                var earnedGem = LevelManager.EarnedGem;
+                
+                Balance.AddCoin(earnedCoin);
+                Balance.AddGem(earnedGem);
+
+                earnedCoinField.text = $"+{earnedCoin}";
+                earnedGemField.text = $"+{earnedGem}";
                 
                 yield return new WaitForSeconds(2f);
                 

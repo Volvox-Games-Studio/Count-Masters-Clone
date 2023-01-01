@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private const string Dropper = "Dropper";
 
 
+    [SerializeField] private PlayerParticle particles;
     [SerializeField] private AudioClip dieSound;
     [SerializeField, Min(0f)] private float formatDuration;
     [SerializeField, Min(0f)] private float dieFormatDuration;
@@ -74,6 +75,7 @@ public class PlayerController : MonoBehaviour
             moveTween?.Kill();
             PlayerSpawner.Remove(this);
             GameEvents.RaisePlayerDied(this);
+            particles.PlayDestroyParticle();
             AudioSource.PlayClipAtPoint(dieSound, Vector3.zero);
 
             IsFallen = true;
@@ -99,6 +101,7 @@ public class PlayerController : MonoBehaviour
         PlayerSpawner.Remove(this, ignoreLevelFail);
         Destroy(gameObject);
         GameEvents.RaisePlayerDied(this);
+        particles.PlayDestroyParticle();
         AudioSource.PlayClipAtPoint(dieSound, Vector3.zero);
         Vibrator.Vibrate();
     }

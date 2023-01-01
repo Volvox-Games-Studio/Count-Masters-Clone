@@ -1628,8 +1628,6 @@ MonoBehaviour:
   groupDieSound: {fileID: 128258694}
   playerPrefab: {fileID: -8455596341821508186, guid: c601def52cbf1d34b9b5debcb2bf1c61,
     type: 3}
-  distanceFactor: 0.35
-  radiusFactor: 1
   dieFormatDelay: 1
 --- !u!114 &1365919324
 MonoBehaviour:

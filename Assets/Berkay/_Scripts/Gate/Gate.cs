@@ -5,6 +5,7 @@ namespace Berkay._Scripts.Gate
 {
     public class Gate : MonoBehaviour
     {
+        [SerializeField] private AudioSource dashSound;
         [SerializeField] private Door left;
         [SerializeField] private Door right;
         
@@ -12,6 +13,7 @@ namespace Berkay._Scripts.Gate
         private void OnDoorDashed(GameEventResponse data)
         {
             ControlPairs();
+            dashSound.Play();
         }
 
         

@@ -28,6 +28,9 @@ namespace Emre
 
         public static UnityAction<GameEventResponse> OnGameStarted;
         public static UnityAction<GameEventResponse> OnGameOver;
+        public static UnityAction<GameEventResponse> OnLevelComplete;
+        public static UnityAction<GameEventResponse> OnReachedFinishLine;
+        public static UnityAction<GameEventResponse> OnStartLevelEnding;
 
 
         public static void RaiseLoadedSongToggle(bool isOn)
@@ -172,6 +175,27 @@ namespace Emre
                 gameOverReason = reason
             });
         }
+
+        public static void RaiseLevelComplete(LevelCompleteType type)
+        {
+            OnLevelComplete?.Invoke(new GameEventResponse()
+            {
+                levelCompleteType = type
+            });
+        }
+
+        public static void RaiseReachedFinishLine()
+        {
+            OnReachedFinishLine?.Invoke(new GameEventResponse());
+        }
+
+        public static void RaiseStartLevelEnding(LevelEndingType type)
+        {
+            OnStartLevelEnding?.Invoke(new GameEventResponse()
+            {
+                levelEndingType = type
+            });
+        }
     }
 
 
@@ -195,11 +219,23 @@ namespace Emre
         public PlayerGroupState playerGroupState;
         public bool isVictory;
         public GameOverReason gameOverReason;
+        public LevelCompleteType levelCompleteType;
+        public LevelEndingType levelEndingType;
     }
 
     public enum GameOverReason
     {
         LosingBattle,
         NoPlayerLeft
+    }
+
+    public enum LevelCompleteType
+    {
+        ChestOpen
+    }
+
+    public enum LevelEndingType
+    {
+        Ladders
     }
 }

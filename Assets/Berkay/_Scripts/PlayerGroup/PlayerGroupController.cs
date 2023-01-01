@@ -24,6 +24,7 @@ public class PlayerGroupController : MonoBehaviour
         GameEvents.OnGameStarted += OnGameStarted;
         GameEvents.OnPlayerGroupSizeChanged += OnPlayerGroupSizeChanged;
         GameEvents.OnBattleEnd += OnBattleEnd;
+        GameEvents.OnLevelComplete += OnLevelComplete;
     }
 
     private void OnDestroy()
@@ -70,5 +71,10 @@ public class PlayerGroupController : MonoBehaviour
         {
             PlayerGroupState = PlayerGroupState.Walking;
         }
+    }
+    
+    private void OnLevelComplete(GameEventResponse response)
+    {
+        PlayerGroupState = PlayerGroupState.Waiting;
     }
 }

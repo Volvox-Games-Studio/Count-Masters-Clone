@@ -74,7 +74,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2925490416634067898}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.3, y: 4.3, z: 131.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -127,7 +127,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 16.362038, y: 5.3971457, z: 1}
-  m_Center: {x: -3.214521, y: -2.1985729, z: -30}
+  m_Center: {x: 0, y: -2.1985729, z: -40}
 --- !u!1 &2925490417507375412
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 2925490417507375411}
   m_Layer: 0
   m_Name: PlayerAttackTrigger
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1feb0cc81174d93b4e2246437712fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 2925490416634067896}
+  archerEnemyParent: {fileID: 2925490416634067898}
 --- !u!65 &2925490417507375408
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -187,7 +187,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 18.309235, y: 5.274144, z: 1}
-  m_Center: {x: -3.1439295, y: -2.137072, z: -2.08}
+  m_Center: {x: 0, y: -2.137072, z: -2.08}
 --- !u!54 &2925490417507375411
 Rigidbody:
   m_ObjectHideFlags: 0

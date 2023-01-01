@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Emre;
 using UnityEngine;
 
@@ -19,16 +20,19 @@ public class PlayerGroupMover : MonoBehaviour
 
     private float horizontalInput;
     private bool isMoving;
+    private bool lockHorizontal;
 
 
     private void Awake()
     {
         GameEvents.OnPlayerGroupStateChanged += OnPlayerGroupStateChanged;
+        GameEvents.OnStartLevelEnding += OnStartLevelEnding;
     }
 
     private void OnDestroy()
     {
         GameEvents.OnPlayerGroupStateChanged -= OnPlayerGroupStateChanged;
+        GameEvents.OnStartLevelEnding -= OnStartLevelEnding;
     }
 
 
@@ -41,6 +45,16 @@ public class PlayerGroupMover : MonoBehaviour
     private void OnPlayerGroupStateChanged(GameEventResponse response)
     {
         isMoving = response.playerGroupState == PlayerGroupState.Walking;
+    }
+
+    private void OnStartLevelEnding(GameEventResponse response)
+    {
+        if (response.levelEndingType == LevelEndingType.Ladders)
+        {
+            lockHorizontal = true;
+            transform.DOMoveX(0f, 0.25f)
+                .SetEase(Ease.OutSine);
+        }
     }
 
 
@@ -59,6 +73,8 @@ public class PlayerGroupMover : MonoBehaviour
 
     private void MoveHorizontal()
     {
+        if (lockHorizontal) return;
+        
         horizontalInput = joystick.Horizontal;
         var delta = Vector3.right * (horizontalInput * horizontalSpeed * Time.deltaTime);
         var newPosition = transform.position + delta;

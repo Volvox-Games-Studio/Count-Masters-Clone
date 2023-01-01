@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5039329352952602172
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5039329352952602171}
+  - component: {fileID: 5039329352952602170}
+  m_Layer: 0
+  m_Name: Ladder Level Ending
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5039329352952602171
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5039329352952602172}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 354}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5039329352952602170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5039329352952602172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841eb49462ed42d5a8881a32b3fe7dba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 8841445616424847303, guid: 1e4e6744a86390d4190a2c521fc97b50, type: 3}
+  chestRoadPrefab: {fileID: 8292495468233663691, guid: 8bcf46b452885724e92982c2ca435b3b,
+    type: 3}
+  colors:
+  - {r: 0.7019608, g: 0.37254903, b: 0.7176471, a: 1}
+  - {r: 0.8352941, g: 0.83137256, b: 0.45490196, a: 1}
+  - {r: 0.7764706, g: 0.91764706, b: 0.7607843, a: 1}
+  - {r: 1, g: 0.87058824, b: 0.56078434, a: 1}
+  - {r: 0.7411765, g: 0.62352943, b: 0.827451, a: 1}
+  stepCount: 30
+  startWidth: 16
+  endWidth: 4
+  startMultiplier: 1
+  endMultiplier: 12

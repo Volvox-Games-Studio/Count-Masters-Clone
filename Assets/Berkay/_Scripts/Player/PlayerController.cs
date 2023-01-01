@@ -6,6 +6,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private const string BattleTrigger = "BattleTrigger";
+    private const string FinishTrigger = "FinishTrigger";
+    private const string LadderBlock = "LadderBlock";
+    private const string ChestEnter = "ChestEnter";
     
     
     [SerializeField, Min(0f)] private float formatDuration;
@@ -30,6 +33,31 @@ public class PlayerController : MonoBehaviour
         if (interactable.CompareTag(BattleTrigger))
         {
             GetComponentInParent<PlayerGroupController>().BeginBattle(interactable.transform.position);
+        }
+        
+        else if (interactable.CompareTag(FinishTrigger))
+        {
+            GameEvents.RaiseReachedFinishLine();
+        }
+        
+        else if (interactable.CompareTag(LadderBlock))
+        {
+            transform.parent = null;
+            CameraManager.SetLadderFocus(interactable.transform.position);
+        }
+        
+        else if (interactable.CompareTag(ChestEnter))
+        {
+            CameraManager.LadderFocus.parent = transform.parent;
+            var position = interactable.transform.position;
+            CameraManager.SetLadderFocus(position);
+            var groupOffset = GroupUtils.IndexToLocalPosition(PlayerSpawner.players.IndexOf(this));
+            var localPosition = transform.parent.InverseTransformPoint(position + groupOffset);
+            
+            moveTween?.Kill();
+            moveTween = transform.DOLocalMove(localPosition, formatDuration);
+            moveTween
+                .SetEase(Ease.OutSine);
         }
     }
     
@@ -62,5 +90,15 @@ public class PlayerController : MonoBehaviour
         moveTween
             .SetSpeedBased()
             .SetDelay(delay);
+    }
+
+    public void LocalMove(Vector3 localPosition)
+    {
+        moveTween?.Kill();
+
+        moveTween = transform.DOLocalMove(localPosition, moveSpeed);
+
+        moveTween
+            .SetSpeedBased();
     }
 }

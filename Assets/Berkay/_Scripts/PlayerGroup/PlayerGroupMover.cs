@@ -28,12 +28,14 @@ public class PlayerGroupMover : MonoBehaviour
     {
         GameEvents.OnPlayerGroupStateChanged += OnPlayerGroupStateChanged;
         GameEvents.OnStartLevelEnding += OnStartLevelEnding;
+        GameEvents.OnReachedFinishLine += OnReachedFinishLine;
     }
 
     private void OnDestroy()
     {
         GameEvents.OnPlayerGroupStateChanged -= OnPlayerGroupStateChanged;
         GameEvents.OnStartLevelEnding -= OnStartLevelEnding;
+        GameEvents.OnReachedFinishLine -= OnReachedFinishLine;
     }
 
 
@@ -61,6 +63,11 @@ public class PlayerGroupMover : MonoBehaviour
         }
     }
 
+    private void OnReachedFinishLine(GameEventResponse response)
+    {
+        walkSound.Stop();
+    }
+    
     private void OnStartLevelEnding(GameEventResponse response)
     {
         if (response.levelEndingType == LevelEndingType.Ladders)

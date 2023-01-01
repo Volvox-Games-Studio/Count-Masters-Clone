@@ -13151,6 +13151,60 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -125
       objectReference: {fileID: 0}
+    - target: {fileID: 2142032537147009789, guid: b59ed7eaa4cb22d4ea5e42e2be99b798,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 76d38029109f58c478655cb4ff7ce199,
+        type: 3}
+    - target: {fileID: 7132408329147394417, guid: b59ed7eaa4cb22d4ea5e42e2be99b798,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b4517a163a4d4bb409ad09e564ca5472,
+        type: 3}
+    - target: {fileID: 7132408329267929690, guid: b59ed7eaa4cb22d4ea5e42e2be99b798,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a08234f690defe14dbac8c84ca9e051f,
+        type: 3}
+    - target: {fileID: 7132408329324280932, guid: b59ed7eaa4cb22d4ea5e42e2be99b798,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 92fb008a52e84a541bd71631f67b5eec,
+        type: 3}
+    - target: {fileID: 7132408329515053475, guid: b59ed7eaa4cb22d4ea5e42e2be99b798,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2781e073b43d8b64381cf88563e2824f,
+        type: 3}
+    - target: {fileID: 7132408329651359761, guid: b59ed7eaa4cb22d4ea5e42e2be99b798,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 78650f816979c3a4daa517f7d5741224,
+        type: 3}
+    - target: {fileID: 7132408330178921524, guid: b59ed7eaa4cb22d4ea5e42e2be99b798,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c3c361021a3142d4e94a1b6244caca49,
+        type: 3}
+    - target: {fileID: 7132408330693302954, guid: b59ed7eaa4cb22d4ea5e42e2be99b798,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bbc8218b405457547ae4887ea1dd550b,
+        type: 3}
+    - target: {fileID: 7132408330770032286, guid: b59ed7eaa4cb22d4ea5e42e2be99b798,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 99ff892ab08ff8e4ba875da4188b8dd5,
+        type: 3}
     - target: {fileID: 8319600644574237302, guid: b59ed7eaa4cb22d4ea5e42e2be99b798,
         type: 3}
       propertyPath: m_AnchorMax.y

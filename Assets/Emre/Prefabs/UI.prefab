@@ -9270,6 +9270,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: aad4b74ca52251a4b963cafc0d8e8201,
         type: 3}
+    - target: {fileID: 6080303408606465374, guid: 6d68247ced74a094aa889fa9a0d76aab,
+        type: 3}
+      propertyPath: sound
+      value: 
+      objectReference: {fileID: 8300000, guid: ce42fd8c17ac0fd439f5881275063386, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d68247ced74a094aa889fa9a0d76aab, type: 3}
 --- !u!114 &6448134622132182968 stripped

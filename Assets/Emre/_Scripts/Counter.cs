@@ -6,7 +6,8 @@ namespace Emre
 {
     public class Counter : MonoBehaviour
     {
-        [Header("References")]
+        [Header("References")] 
+        [SerializeField] private AudioClip sound;
         [SerializeField] private TMP_Text countField;
 
         
@@ -30,6 +31,11 @@ namespace Emre
             transform.DOScale(Vector3.one, 0.25f)
                 .SetEase(Ease.OutSine)
                 .SetDelay(duration);
+
+            if (sound)
+            {
+                AudioSource.PlayClipAtPoint(sound, Vector3.zero);
+            }
         }
     }
 }

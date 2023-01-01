@@ -406,6 +406,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6531038409236509807, guid: 6eb64f285bdc2214d87e7b7774d03050,
+        type: 3}
+      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531038409236509807, guid: 6eb64f285bdc2214d87e7b7774d03050,
+        type: 3}
+      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531038409236509807, guid: 6eb64f285bdc2214d87e7b7774d03050,
+        type: 3}
+      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8841445616424847303}
+    - target: {fileID: 6531038409236509807, guid: 6eb64f285bdc2214d87e7b7774d03050,
+        type: 3}
+      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531038409236509807, guid: 6eb64f285bdc2214d87e7b7774d03050,
+        type: 3}
+      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Touch
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531038409236509807, guid: 6eb64f285bdc2214d87e7b7774d03050,
+        type: 3}
+      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Emre.LadderBlock, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531038409236509807, guid: 6eb64f285bdc2214d87e7b7774d03050,
+        type: 3}
+      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6eb64f285bdc2214d87e7b7774d03050, type: 3}
 --- !u!4 &745978588931635628 stripped

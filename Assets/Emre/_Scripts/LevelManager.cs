@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +7,8 @@ namespace Emre
     {
         private const string LevelKey = "Level";
         private const string LevelCycleKey = "Level_Cycle";
+        private const int CoinPerLevel = 25;
+        private const int GemPerLevel = 1;
 
 
         [SerializeField] private GameObject[] levelPrefabs;
@@ -26,6 +27,9 @@ namespace Emre
             get => PlayerPrefs.GetInt(LevelCycleKey, 0);
             private set => PlayerPrefs.SetInt(LevelCycleKey, value);
         }
+
+        public static int EarnedCoin => (int) (AbsLevel * CoinPerLevel * LadderBlock.Multiplier);
+        public static int EarnedGem => (int) (AbsLevel * GemPerLevel * LadderBlock.Multiplier);
         
         
         private static LevelManager Instance => ms_Instance ? ms_Instance : FindObjectOfType<LevelManager>();

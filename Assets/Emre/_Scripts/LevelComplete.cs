@@ -28,6 +28,9 @@ namespace Emre
             
             IEnumerator Routine()
             {
+                Balance.AddCoin(LevelManager.EarnedCoin);
+                Balance.AddGem(LevelManager.EarnedGem);
+                
                 yield return new WaitForSeconds(2f);
                 
                 main.SetActive(true);
